@@ -32,6 +32,7 @@ if __name__ == "__main__":
     # print(row)
     #
     col = csv_org.contain_col(3,df)
+
     # print(col)
     # col_ChestPain = csv_org.change_str_col('ChestPain',df)
     # print(col_ChestPain)
@@ -92,9 +93,6 @@ if __name__ == "__main__":
     df2.__delitem__('ChestPain')
     df2.__delitem__('Thal')
     df2.to_csv(new_path, encoding='utf-8', index=False)
-
-
-
 
 
 

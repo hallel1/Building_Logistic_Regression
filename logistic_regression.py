@@ -41,10 +41,10 @@ def  classification( thata,X):
 X- vector 
 """
 #---------------------------
-def lgReg_iter(thata, X,y, i):# X is vector of row
+def lgReg_iter(thata, X,y):# X is vector of row
     h_of_xi=  h_func(thata,X)
-    calc= y * np.math.log(h_of_xi)
-    return 0
+    calc= y * np.math.log(h_of_xi)+ (1-y)* np.math.log(1- h_of_xi)#######check!!
+    return calc
 
 #---------------------------
 # def probability_func(thata,X_matrix,y):
@@ -53,13 +53,16 @@ def lgReg_iter(thata, X,y, i):# X is vector of row
 #     return prob
 
 #---------------------------
-def lgReg(thata, X_matrix, Y,file):
+def lgReg(thata, file):
     sum = 0
+
     count_row = file.shape[0]# parameter m
     for i in range(1, count_row + 1):
-        X=contain_row(i)
-        X=X[:-1]
-        sum+=lgReg_iter(thata, X, Y, i)
+        yi = contain_row(i, file)
+        yi = yi[-1]
+        X=contain_row(i,file)
+        X=X[:-1]# all row except the last cell
+        sum+=lgReg_iter(thata, X, yi)
 
 
     return 0

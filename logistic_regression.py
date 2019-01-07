@@ -42,7 +42,7 @@ X- vector
 """
 #---------------------------
 def lgReg_iter(thata, X,y, i):
-    sum = 0
+   # calc= y * np.math.log()
     return 0
 
 #---------------------------
@@ -58,13 +58,13 @@ def lgReg(thata, X_matrix, Y,file):
     for i in range(1, count_row + 1):
         X=contain_row(i)
         X=X[:-1]
-        lgReg_iter(thata, X, Y, i)
+        sum+=lgReg_iter(thata, X, Y, i)
 
 
     return 0
 
 
 
-#-----------MAIM---------------------
-if __name__ == "__main__":
-    print(1/(1+e**-2))
+# #-----------MAIM---------------------
+# if __name__ == "__main__":
+#     print(1/(1+e**-2))

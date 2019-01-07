@@ -53,7 +53,6 @@ X- vector
 #---------------------------
 def lgReg_iter(thata, X,y):# X is vector of row
     h_of_xi=  h_func(thata,X)
-    print(1- h_of_xi)
     calc= y * np.math.log(h_of_xi)+ (1-y)* np.math.log(1- h_of_xi)#######check!!
     return calc
 
@@ -68,9 +67,9 @@ def lgReg(thata, file):
     sum = 0
 
     count_row = file.shape[0]# parameter m
-    for i in range(1, count_row + 1):
+    for i in range(0, count_row ):
         yi = contain_row(i, file)
-        yi = yi[:-1]
+        yi = yi[-1]
         X=contain_row(i,file)
         X=X[:-1]# all row except the last cell
         sum+=lgReg_iter(thata, X, yi)

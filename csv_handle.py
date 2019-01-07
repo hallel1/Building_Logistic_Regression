@@ -194,16 +194,12 @@ def split_col_data(col_name,df2):
                      col[i] = no
 # -------------------------------
 
-<<<<<<< HEAD
-=======
-
-
 
 
 
 # -------------------------------
-'''
->>>>>>> 9b211fc03d928b9cbf233a5745698b3cb1281125
+
+
 def normalizationAll(file):
     colNum=file.shape[1]
     for colIndex in range(1,colNum):  # run on the num of cols

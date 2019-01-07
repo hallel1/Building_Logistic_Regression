@@ -5,7 +5,7 @@ from pandas import DataFrame
 import csv_handle as csv_org
 import logistic_regression as logreg
 ##--------------------MAIN------------------------
-print('mainnnnnnnnn')
+######print('mainnnnnnnnn')
 path = 'data.csv'
 name = 'ChestPain'
 df_org = pd.read_csv(path)

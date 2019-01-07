@@ -77,6 +77,9 @@ if __name__ == "__main__":
     # df2.insert(24, 'No', np.nan)
 
 
+
+
+
     df2.to_csv(new_path, encoding='utf-8', index=False)
 
     ###################################################################
@@ -85,10 +88,12 @@ if __name__ == "__main__":
     csv_org.split_col_data('ChestPain', df2)
     csv_org.split_col_data('Thal',  df2)
     csv_org.split_col_data('AHD', df2)
+    # afther spliting the cols del the orginal
+    df2.__delitem__('ChestPain')
+    df2.__delitem__('Thal')
     df2.to_csv(new_path, encoding='utf-8', index=False)
-    print(df2.columns.get_loc('ChestPain'))
-    print(df2.columns.get_loc('Thal'))
-    print(df2.columns.get_loc('AHD'))
+
+
 
 
 

@@ -64,7 +64,7 @@ if __name__ == "__main__":
     df2.to_csv('changeData.csv')
     new_path = 'changeData.csv'
     df2.to_csv(new_path, encoding='utf-8', index=False)
-    df2.insert(4, 'typical', df_org['ChestPain'].__deepcopy__())
+    df2.insert(4, 'typical',  np.nan)
     df2.insert(5, 'asymptomatic', np.nan)
     df2.insert(6, 'nonanginal', np.nan)
     df2.insert(7, 'nontypical', np.nan)
@@ -92,6 +92,7 @@ if __name__ == "__main__":
     # afther spliting the cols del the orginal
     df2.__delitem__('ChestPain')
     df2.__delitem__('Thal')
+<<<<<<< HEAD
     df2.to_csv(new_path, encoding='utf-8', index=False)
    # print(df2)
     csv_org.normalizationAll(df2)
@@ -99,5 +100,23 @@ if __name__ == "__main__":
   #  print(csv_org.recognizeColByNum(df2,15))
    # csv_org.normalization(df2,15)
     print(df2)
+=======
+    # df2.to_csv(new_path, encoding='utf-8', index=False)
+    # print(df2.shape)
+    print(" check logistic regression  methods  ")
+    v_thata=logreg.random_thata(df2)
+    logreg.lgReg(v_thata,df2)
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> 9b211fc03d928b9cbf233a5745698b3cb1281125
 
     print(" finsh check csv_org methods  ")

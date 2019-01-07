@@ -37,58 +37,6 @@ def contain_col(col_num,df):
         colList.append(df.iloc[j][col_num])
     return colList
 
-#---------------------------------------
-
-
-
-
-def change_str_col(col_name,df):
-    count_row = df.shape[0]
-
-    if col_name=='ChestPain':
-        col = contain_col(3,df)
-        for i in range(count_row):
-            if col[i] == 'typical':
-                col[i] = typical
-                df['ChestPain'].at[i]=typical
-            if col[i] == 'asymptomatic':
-                col[i] = asymptomatic
-                df['ChestPain'].at[i] = asymptomatic
-            if col[i] == "nonanginal":
-                col[i] = nonanginal
-                df['ChestPain'].at[i] = nonanginal
-            if col[i] == "nontypical":
-                col[i] = nontypical
-                df['ChestPain'].at[i] = nontypical
-    elif  col_name =='AHD':
-        col = contain_col(14,df)
-        for i in range(count_row):
-            if col[i] == 'Yes':
-                df['AHD'].at[i]=yes
-                col[i]=yes
-            if col[i] == 'No':
-                df['AHD'].at[i]=no
-                col[i]=no
-
-    elif col_name =='Thal':
-        col = contain_col(13,df)
-        for i in range(count_row):
-            if col[i] == 'fixed':
-                df['Thal'].at[i]=fixed
-                col[i]=fixed
-            if col[i]=='NaN' :
-                df['Thal'].at[i]=NA
-                col[i]=NA
-            if col[i] == 'normal':
-                df['Thal'].at[i]=normal
-                col[i]=normal
-            if col[i] == 'reversable':
-                df['Thal'].at[i]=reversable
-                col[i]=reversable
-
-    return col
-
-
 
 #-------------------------------
 def isNaN(val):
@@ -228,7 +176,7 @@ def split_col_data(col_name,df2):
                  df2['NaN'].at[i] = 0
                  df2['normal'].at[i] = 0
                  df2['reversable'].at[i] = 0
-             elif col[i] == 'NaN':
+             elif isNaN(col[i]):
                  df2['fixed'].at[i] = 0
                  df2['NaN'].at[i] = 1
                  df2['normal'].at[i] = 0
@@ -253,3 +201,20 @@ def split_col_data(col_name,df2):
                      df2['AHD'].at[i] = 0
                      col[i] = no
 # -------------------------------
+'''
+def normalizationAll(file):
+    print('all')
+    colNum=file.shape[1]
+    rowNum = file.shape[0]
+    for colIndex in range(colNum):  # run on the num of cols
+        colName = recognizeColByNum(file, colIndex)
+        colLine = contain_col(colIndex, file)
+        print(colLine)
+        print(type(colLine[0]))
+        if colName=='ChestPain' or colName=='Thal' or colName=='AHD': #isinstance(colIndex[0], (list,)):#check if the col is list
+            for j in range(rowNum):
+              # print(colLine[j][])
+               normalization(file, colLine[j])
+        # else:
+        #     normalization(file, col)
+'''

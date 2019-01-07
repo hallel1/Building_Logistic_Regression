@@ -201,6 +201,13 @@ def split_col_data(col_name,df2):
                      df2['AHD'].at[i] = 0
                      col[i] = no
 # -------------------------------
+
+
+
+
+
+
+# -------------------------------
 '''
 def normalizationAll(file):
     print('all')

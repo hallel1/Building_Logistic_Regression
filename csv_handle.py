@@ -37,6 +37,58 @@ def contain_col(col_num,df):
         colList.append(df.iloc[j][col_num])
     return colList
 
+#---------------------------------------
+
+
+
+
+def change_str_col(col_name,df):
+    count_row = df.shape[0]
+
+    if col_name=='ChestPain':
+        col = contain_col(3,df)
+        for i in range(count_row):
+            if col[i] == 'typical':
+                col[i] = typical
+                df['ChestPain'].at[i]=typical
+            if col[i] == 'asymptomatic':
+                col[i] = asymptomatic
+                df['ChestPain'].at[i] = asymptomatic
+            if col[i] == "nonanginal":
+                col[i] = nonanginal
+                df['ChestPain'].at[i] = nonanginal
+            if col[i] == "nontypical":
+                col[i] = nontypical
+                df['ChestPain'].at[i] = nontypical
+    elif  col_name =='AHD':
+        col = contain_col(14,df)
+        for i in range(count_row):
+            if col[i] == 'Yes':
+                df['AHD'].at[i]=yes
+                col[i]=yes
+            if col[i] == 'No':
+                df['AHD'].at[i]=no
+                col[i]=no
+
+    elif col_name =='Thal':
+        col = contain_col(13,df)
+        for i in range(count_row):
+            if col[i] == 'fixed':
+                df['Thal'].at[i]=fixed
+                col[i]=fixed
+            if col[i]=='NaN' :
+                df['Thal'].at[i]=NA
+                col[i]=NA
+            if col[i] == 'normal':
+                df['Thal'].at[i]=normal
+                col[i]=normal
+            if col[i] == 'reversable':
+                df['Thal'].at[i]=reversable
+                col[i]=reversable
+
+    return col
+
+
 
 #-------------------------------
 def isNaN(val):

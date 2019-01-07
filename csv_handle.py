@@ -107,19 +107,12 @@ def normalization(file, col_num):
     col = contain_col(col_num, file)  # create list from row
     average,line_count,flagNaN=averageCol(col)
     if flagNaN==1:
-#        print('there nannnnnnnnnnnn')
         replaceNaN(file,col_num, average)
         col = contain_col(col_num, file)  # create list from row
         average, line_count, flagNaN = averageCol(col)
     standard_deviation=0
     index=0
     normalization_col=col
-
-#    print('nor fun')
-#    print(col)
-
-#    print('line_count '+str(line_count))
-
 
     for i in col:
         tmp =i-average
@@ -135,9 +128,8 @@ def normalization(file, col_num):
         index+=1
     colName = recognizeColByNum(file, col_num)
     file[colName]=normalization_col#Updating the column to be normalized
-#    print(col)
+    print(col)
 
-  #  return normalization_col
 
 
 # -------------------------------
@@ -201,20 +193,9 @@ def split_col_data(col_name,df2):
                      df2['AHD'].at[i] = 0
                      col[i] = no
 # -------------------------------
-'''
+
 def normalizationAll(file):
-    print('all')
     colNum=file.shape[1]
-    rowNum = file.shape[0]
-    for colIndex in range(colNum):  # run on the num of cols
-        colName = recognizeColByNum(file, colIndex)
+    for colIndex in range(1,colNum):  # run on the num of cols
         colLine = contain_col(colIndex, file)
-        print(colLine)
-        print(type(colLine[0]))
-        if colName=='ChestPain' or colName=='Thal' or colName=='AHD': #isinstance(colIndex[0], (list,)):#check if the col is list
-            for j in range(rowNum):
-              # print(colLine[j][])
-               normalization(file, colLine[j])
-        # else:
-        #     normalization(file, col)
-'''
+        normalization(file, colIndex)

@@ -93,17 +93,11 @@ if __name__ == "__main__":
     df2.__delitem__('ChestPain')
     df2.__delitem__('Thal')
     df2.to_csv(new_path, encoding='utf-8', index=False)
-
-
-
-
-
-
-
-
-
-
-
+   # print(df2)
+    csv_org.normalizationAll(df2)
+    df2.to_csv(new_path, encoding='utf-8', index=False)
+  #  print(csv_org.recognizeColByNum(df2,15))
+   # csv_org.normalization(df2,15)
+    print(df2)
 
     print(" finsh check csv_org methods  ")
-    #print(df)

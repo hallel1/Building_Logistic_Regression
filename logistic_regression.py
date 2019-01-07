@@ -4,7 +4,7 @@ import csv
 import pandas as pd
 from pandas import DataFrame
 from csv_handle import contain_row
-
+import matplotlib.pyplot as plt
 
 
 
@@ -75,7 +75,7 @@ def lgReg(thata, file):
         sum+=lgReg_iter(thata, X, yi)
 
 
-    return sum
+    return (X,yi,sum)
 
 #---------------------------
 def random_thata(df2):
@@ -89,3 +89,9 @@ def random_thata(df2):
 # #-----------MAIM---------------------
 # if __name__ == "__main__":
 #     print(1/(1+e**-2))
+def plot(X,y):
+    plt.plot(X,y, label='Decision Boundary')
+    plt.xlabel('Marks in 1st Exam')
+    plt.ylabel('Marks in 2nd Exam')
+    plt.legend()
+    plt.show()

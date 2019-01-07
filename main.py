@@ -105,8 +105,9 @@ if __name__ == "__main__":
     # print(df2.shape)
     print(" check logistic regression  methods  ")
     v_thata=logreg.random_thata(df2)
-    sum=logreg.lgReg(v_thata,df2)
-
+    sum,XRow,yi=logreg.lgReg(v_thata,df2)
     print(sum)
+
+    logreg.plot(XRow, yi)
 
     print(" finsh check csv_org methods  ")

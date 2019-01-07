@@ -75,7 +75,7 @@ def lgReg(thata, file):
         sum+=lgReg_iter(thata, X, yi)
 
 
-    return 0
+    return sum
 
 #---------------------------
 def random_thata(df2):

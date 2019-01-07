@@ -193,20 +193,63 @@ def normalization(file, col_num):
 
 
 # -------------------------------
-'''
-def normalizationAll(file):
-    print('all')
-    colNum=file.shape[1]
-    rowNum = file.shape[0]
-    for colIndex in range(colNum):  # run on the num of cols
-        colName = recognizeColByNum(file, colIndex)
-        colLine = contain_col(colIndex, file)
-        print(colLine)
-        print(type(colLine[0]))
-        if colName=='ChestPain' or colName=='Thal' or colName=='AHD': #isinstance(colIndex[0], (list,)):#check if the col is list
-            for j in range(rowNum):
-              # print(colLine[j][])
-               normalization(file, colLine[j])
-        # else:
-        #     normalization(file, col)
-'''
+def split_col_data(col_name,df2):
+     length= df2.shape[0]
+     col_num =df2.columns.get_loc(col_name)
+     if col_name=='ChestPain':
+         col=contain_col(col_num, df2)
+         # print(col)
+         for i in range(length):
+             if  col[i]=='typical':
+                 df2['typical'].at[i]=1
+                 df2['asymptomatic'].at[i]=0
+                 df2['nonanginal'].at[i]=0
+                 df2['nontypical'].at[i]=0
+             elif col[i]=='asymptomatic':
+                 df2['typical'].at[i] = 0
+                 df2['asymptomatic'].at[i] = 1
+                 df2['nonanginal'].at[i] = 0
+                 df2['nontypical'].at[i] = 0
+             elif col[i] == 'nonanginal':
+                 df2['typical'].at[i] = 0
+                 df2['asymptomatic'].at[i] = 0
+                 df2['nonanginal'].at[i] = 1
+                 df2['nontypical'].at[i] = 0
+             elif col[i] == 'nontypical':
+                 df2['typical'].at[i] = 0
+                 df2['asymptomatic'].at[i] = 0
+                 df2['nonanginal'].at[i] = 0
+                 df2['nontypical'].at[i] = 1
+     if col_name =='Thal':
+         col= contain_col(col_num,df2)
+         for i in range(length):
+             if col[i] == 'fixed':
+                 df2['fixed'].at[i] = 1
+                 df2['NaN'].at[i] = 0
+                 df2['normal'].at[i] = 0
+                 df2['reversable'].at[i] = 0
+             elif col[i] == 'NaN':
+                 df2['fixed'].at[i] = 0
+                 df2['NaN'].at[i] = 1
+                 df2['normal'].at[i] = 0
+                 df2['reversable'].at[i] = 0
+             elif col[i] == 'normal':
+                 df2['fixed'].at[i] = 0
+                 df2['NaN'].at[i] = 0
+                 df2['normal'].at[i] = 1
+                 df2['reversable'].at[i] = 0
+             elif col[i] == 'reversable':
+                 df2['fixed'].at[i] = 0
+                 df2['NaN'].at[i] = 0
+                 df2['normal'].at[i] = 0
+                 df2['reversable'].at[i] = 1
+     if col_name =='AHD':
+             col = contain_col(col_num, df2)
+             for i in range(length):
+                 if col[i] == 'Yes':
+                     df2['AHD'].at[i] = 1
+                     col[i] = yes
+                 elif col[i] == 'No':
+                     df2['AHD'].at[i] = 0
+                     col[i] = no
+# -------------------------------

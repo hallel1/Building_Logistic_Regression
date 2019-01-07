@@ -4,6 +4,7 @@ import csv
 import pandas as pd
 from pandas import DataFrame
 from csv_handle import contain_row
+#from csv_handle import contain_col
 import matplotlib.pyplot as plt
 
 
@@ -79,7 +80,7 @@ def lgReg(thata, file):
 
 #---------------------------
 def random_thata(df2):
-    for i in range(df2.shape[1]):
+    for i in range(df2.shape[1]):#range about num of col
         vector_thata=[]
         vector_thata.append(np.random.random())
         # print(i,vector_thata)
@@ -89,7 +90,21 @@ def random_thata(df2):
 # #-----------MAIM---------------------
 # if __name__ == "__main__":
 #     print(1/(1+e**-2))
-def plot(X,y):
+def plot(X,y,df):
+    #count_row = df.shape[0]  # parameter m
+    #for i in range(0, count_row)    :
+    for i in range(df.shape[0]):  # range about num of row
+       XRow =contain_row(i, df)
+       X = X[:-1]  # all row except the last cell
+    healthy = YCol[y == 1]
+    # filter out the applicants that din't get admission
+    not_admitted = df.loc[y == 0]
+
+    # plots
+    plt.scatter(admitted.iloc[:, 0], admitted.iloc[:, 1], s=10, label='Admitted')
+    plt.scatter(not_admitted.iloc[:, 0], not_admitted.iloc[:, 1], s=10, label='Not Admitted')
+
+
     plt.plot(X,y, label='Decision Boundary')
     plt.xlabel('Marks in 1st Exam')
     plt.ylabel('Marks in 2nd Exam')

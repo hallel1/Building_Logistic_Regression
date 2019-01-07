@@ -108,6 +108,6 @@ if __name__ == "__main__":
     sum,XRow,yi=logreg.lgReg(v_thata,df2)
     print(sum)
 
-    logreg.plot(XRow, yi)
+    logreg.plot(XRow, yi,df2)
 
     print(" finsh check csv_org methods  ")

@@ -202,6 +202,6 @@ def split_col_data(col_name,df2):
 
 def normalizationAll(file):
     colNum=file.shape[1]
-    for colIndex in range(1,colNum):  # run on the num of cols
+    for colIndex in range(1,colNum-1):  # run on the num of cols
         colLine = contain_col(colIndex, file)
         normalization(file, colIndex)

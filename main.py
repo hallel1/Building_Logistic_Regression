@@ -32,6 +32,7 @@ if __name__ == "__main__":
     # print(row)
     #
     col = csv_org.contain_col(3,df)
+
     # print(col)
     # col_ChestPain = csv_org.change_str_col('ChestPain',df)
     # print(col_ChestPain)
@@ -89,9 +90,6 @@ if __name__ == "__main__":
     print(df2.columns.get_loc('ChestPain'))
     print(df2.columns.get_loc('Thal'))
     print(df2.columns.get_loc('AHD'))
-
-
-
 
 
 

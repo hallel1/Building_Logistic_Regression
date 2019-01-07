@@ -91,8 +91,8 @@ def change_str_col(col_name,df):
 
 
 #-------------------------------
-def isNaN(num):
-    return num != num or num==''
+def isNaN(val):
+    return val != val or val==''
 #-------------------------------
 def averageCol(col):
     #didnt count nun lines, flagNaN is 1 if there are nan

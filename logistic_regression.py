@@ -41,8 +41,9 @@ def  classification( thata,X):
 X- vector 
 """
 #---------------------------
-def lgReg_iter(thata, X,y, i):
-   # calc= y * np.math.log()
+def lgReg_iter(thata, X,y, i):# X is vector of row
+    h_of_xi=  h_func(thata,X)
+    calc= y * np.math.log(h_of_xi)
     return 0
 
 #---------------------------

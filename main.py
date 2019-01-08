@@ -113,6 +113,12 @@ if __name__ == "__main__":
     betterTheta = logreg.gradientDescent(v_theta,0.9999999999999, df2,1,5,0.0000000000000003)
     #logreg.gradientDescentIter(v_theta,0.5, df2,1)
     print('better', betterTheta)
+    XMatrix=logreg.x_matrix(df2)
+    y=logreg.y_vector(df2)
+    print('XMatrix.shape ' ,len(XMatrix),len(XMatrix[0]))
+    print('y.shape ', len(y))
+    X_train, X_test, y_train, y_test = train_test_split(XMatrix, y, test_size = 0.25, random_state = 42)
+
 #    logreg.plot(XRow, yi,df2)
-    logreg.print_graph()
+  #  logreg.print_graph()
     print(" finsh check csv_org methods  ")

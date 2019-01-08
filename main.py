@@ -86,7 +86,7 @@ if __name__ == "__main__":
 
     ###################################################################
     col = csv_org.contain_col(3,df_org)
-    print(col)
+#    print(col)
     csv_org.split_col_data('ChestPain', df2)
     csv_org.split_col_data('Thal',  df2)
     csv_org.split_col_data('AHD', df2)
@@ -106,19 +106,21 @@ if __name__ == "__main__":
     # print(df2.shape)
     print(" check logistic regression  methods  ")
 
-    v_theta=logreg.random_theta(df2)
-    sum=logreg.lgReg(v_theta,df2)
-    print('sum',sum)
+
+#    sum=logreg.lgReg(v_theta,df2)
+#     print('sum',sum)
+    v_theta = logreg.random_theta(df2)
     print('theta',v_theta)
-    betterTheta = logreg.gradientDescent(v_theta,0.9999999999999, df2,1,5,0.0000000000000003)
+#    betterTheta = logreg.gradientDescent(v_theta,0.9999999999999, df2,1,5,0.0000000000000003)
     #logreg.gradientDescentIter(v_theta,0.5, df2,1)
-    print('better', betterTheta)
+#    print('better', betterTheta)
     XMatrix=logreg.x_matrix(df2)
     y=logreg.y_vector(df2)
     print('XMatrix.shape ' ,len(XMatrix),len(XMatrix[0]))
     print('y.shape ', len(y))
     X_train, X_test, y_train, y_test = train_test_split(XMatrix, y, test_size = 0.25, random_state = 42)
-
+    print('xt ',X_train)
+    print('xt[0] ', X_train[0])
 #    logreg.plot(XRow, yi,df2)
   #  logreg.print_graph()
     print(" finsh check csv_org methods  ")

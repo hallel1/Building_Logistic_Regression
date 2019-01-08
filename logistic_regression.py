@@ -42,7 +42,7 @@ def h_func( theta,X):
     g=sigmoid(z)
     return g
 
-#----------------------------
+
 #---------------------------
 def random_theta(df):
     vector_theta = []
@@ -52,37 +52,32 @@ def random_theta(df):
 
 
 #-------------------------------
-def gradient(theta, file,indexRow):
+def gradient(theta,xi_vec,yi,numTrain):
     gradientVal=0
-   # count_col = file.shape[1]
-    X = contain_row(indexRow, file)
-    X = X[:-1]  # all row except the last cell
-    yi = contain_row(indexRow, file)
-    yi = yi[-1]
-    m = file.shape[0]  # num of row
-    h=h_func(theta, X)
+    h=h_func(theta, xi_vec)
     #gradientVal=(1 / m) * np.dot(X.transpose(), h - yi)####maybe need x.t (transpose)
-    print('col',len(X))
-    for j in range(len(X)):
-        gradientVal+=(h - yi)*X[j]
-    gradientVal=(1 / m) *gradientVal
+    print('col',len(xi_vec))
+    for j in range(len(xi_vec)):
+        gradientVal+=(h - yi)*xi_vec[j]
+    gradientVal=(1 / numTrain) *gradientVal
     return gradientVal
 #------------------------------------------
-def gradientDescentIter(theta,alpha, file,indexRow):
-    gradientVal=gradient(theta, file, indexRow)
+def gradientDescentIter(theta,alpha,xi_vec,yi,numTrain):
+    gradientVal=gradient(theta,xi_vec,yi,numTrain)
     theta=theta+alpha*gradientVal
     return theta
 #------------------------------------------
-def gradientDescent(theta,alpha, file,indexRow,maxIter,difference):
+def gradientDescent(theta,alpha,maxIter,difference,xi_vec,yi,numTrain):
 
     for j in range(maxIter):
         diffOrg= theta[0]
-        theta=gradientDescentIter(theta, alpha, file, indexRow)
+        theta=gradientDescentIter(theta, alpha,xi_vec,yi,numTrain)
         print('new theta',theta)
         if abs(diffOrg-theta[0]) <difference:#####checkkk
             print('yes diff')
             break
     return theta
+#------------------------------------------
 # fun y^ - for Classification
 def  classification( theta,X):
     h= h_func( theta,X)
@@ -128,20 +123,26 @@ def lgReg_iter(theta, X,y):# X is vector of row
 
 #---------------------------
 
-def lgReg(theta, file):
+def lgReg(theta, x_train,y_train,alpha, maxIter, difference):
+    costVal=cost(theta, x_train, y_train)
+    index=0##########change
+    betterTheta=gradientDescent(theta,alpha,maxIter,difference,x_train[index],y_train[index],len(y_train))
+    costVal = cost(betterTheta, x_train, y_train)
+    return costVal
+
+def cost(theta, x_train,y_train):
     sum = 0
 
-    count_row = file.shape[0]# parameter m
+    count_row = len(y_train)#file.shape[0]# parameter m
     for i in range(0, count_row ):
-        yi= yi_val(file, i)
-        X = xi_vector(file, i)
+        yi= y_train[i]
+        X = x_train[i]#expecting get vector
+        print('x_train[i] expecting get vector ',x_train[i])
         sum+=lgReg_iter(theta, X, yi)
 
     sum = -1 * sum #####check if ok to mult by -1
     sum = (1/count_row) * sum #####check if here!!!
     return (sum)
-
-
 '''
 def plot(X,y,df):
     #count_row = df.shape[0]  # parameter m

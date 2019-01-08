@@ -142,3 +142,14 @@ def plot(X,y,df):
     plt.legend()
     plt.show()
     '''
+
+ # example how to draw graph
+def print_graph():
+    x=[2,5,6,7,8,9]
+    y=[1,2,3,4,5,6]
+    # plt.hist(x,y,histtype='bar',rwidth=0.8)#malben
+    plt.scatter(x,y,label='skitscat',color='blue',marker='o',s=50)
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.legend()
+    plt.show()

@@ -8,7 +8,11 @@ from csv_handle import contain_row
 import matplotlib.pyplot as plt
 
 
-
+#--------------------Variables----------------------------
+true=1
+false=0
+positive=1
+negative=0
 
 
 
@@ -173,3 +177,44 @@ def plot(X,y,df):
     plt.ylabel('y')
     plt.legend()
     plt.show()'''
+
+#------------------------------------------
+def accuracy(right,all_test):
+    a=right/all_test
+    return a
+
+#-----------------------------------
+def error(accuracy):
+    err=1-accuracy
+    return err
+
+#----------------------------------
+def recall(TP,FN):
+    rec=TP/(TP+FN)
+    return rec
+
+#----------------------------------
+def precision(TP,FP):
+    pre=TP/(TP+FP)
+    return pre
+
+#----------------------------------
+def F_score(recall,precision):
+    rec =1/recall
+    pre=1/precision
+    f_score=2/(rec+pre)
+    return f_score
+
+#--------------------------------
+# true positive rate
+def TPR(TP,FN):
+    tpr=TP/(TP+FN)
+    return tpr
+
+#--------------------------------
+## false positive rate
+def FPR(FP,TN):
+    fpr=FP/(FP+TN)
+    return fpr
+
+# --------------------------------

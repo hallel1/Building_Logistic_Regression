@@ -8,11 +8,16 @@ from csv_handle import contain_row
 import matplotlib.pyplot as plt
 
 
-#--------------------Variables----------------------------
-true=1
-false=0
-positive=1
-negative=0
+# #--------------------Variables----------------------------
+# true=1
+# false=0
+# positive=1
+# negative=0
+TP=0#  was predicted that the patient is sick and was right ( y=1, h=1 )
+FN=0# the model predicted that the patient is healthy  and was wrong( y=1, h=0 )
+FP=0# the model predicted that the patient is sick and was wrong (y=0,h=1)
+TN=0# the model predicted that the patient is healthy and was right (y=0,h=0)
+
 
 
 
@@ -33,6 +38,7 @@ def h_func( theta,X):
     # print(z)
     # z=sum(z)
     # print (z)
+    # for i in range(df.shape[])
 
     z=[a*b for a, b in zip(theta, X)]
     z = sum(z)
@@ -80,6 +86,7 @@ def gradientDescent(theta,alpha,maxIter,difference,xi_vec,yi,numTrain):
 #------------------------------------------
 # fun y^ - for Classification
 def  classification( theta,X):
+
     h= h_func( theta,X)
     if h>=0.5:
         return 1
@@ -143,6 +150,49 @@ def cost(theta, x_train,y_train):
     sum = -1 * sum #####check if ok to mult by -1
     sum = (1/count_row) * sum #####check if here!!!
     return (sum)
+
+
+#---------------------------
+def random_theta(df):
+    vector_theta = []
+    for i in range(df.shape[1]):#range about num of col
+        vector_theta.append(np.random.random())
+    return vector_theta
+
+
+#-------------------------------
+def gradient(theta, file,indexRow):
+    gradientVal=0
+   # count_col = file.shape[1]
+    X = contain_row(indexRow, file)
+    X = X[:-1]  # all row except the last cell
+    yi = contain_row(indexRow, file)
+    yi = yi[-1]
+    m = file.shape[0]  # num of row
+    h=h_func(theta, X)
+    #gradientVal=(1 / m) * np.dot(X.transpose(), h - yi)####maybe need x.t (transpose)
+    # print('col',len(X))
+    for j in range(len(X)):
+        gradientVal+=(h - yi)*X[j]
+    gradientVal=(1 / m) *gradientVal
+    return gradientVal
+#------------------------------------------
+def gradientDescentIter(theta,alpha, file,indexRow):
+    gradientVal=gradient(theta, file, indexRow)
+    theta=theta+alpha*gradientVal
+    return theta
+#------------------------------------------
+def gradientDescent(theta,alpha, file,indexRow,maxIter,difference):
+
+    for j in range(maxIter):
+        diffOrg= theta[0]
+        theta=gradientDescentIter(theta, alpha, file, indexRow)
+        # print('new theta',theta)
+        if abs(diffOrg-theta[0]) <difference:#####checkkk
+            print('yes diff')
+            break
+    return theta
+
 '''
 def plot(X,y,df):
     #count_row = df.shape[0]  # parameter m
@@ -181,7 +231,35 @@ def plot(X,y,df):
     plt.legend()
     plt.show()'''
 
-#------------------------------------------
+
+
+#-----------------------------------------
+# X_test- matrix of values
+# h- predicded value
+# y- real value (Vector of values)
+#
+def predicted_Value (X_test,thata,Y_test):
+    TP = 0  # was predicted that the patient is sick and was right ( y=1, h=1 )
+    FN = 0  # the model predicted that the patient is healthy  and was wrong( y=1, h=0 )
+    FP = 0  # the model predicted that the patient is sick and was wrong (y=0,h=1)
+    TN = 0  # the model predicted that the patient is healthy and was right (y=0,h=0)
+    for i in range(len(X_test)):
+        xi=X_test[i]
+        yi=Y_test[i]
+        h=classification(thata, xi)
+        #print(i,h)
+        if yi == 1 and h == 1:
+            TP = TP+1
+        elif yi == 1 and h == 0:
+            FN = FN+1
+        elif yi == 0 and h == 1:
+            FP =FP +1
+        elif yi == 0 and h == 0:
+            TN =TN +1
+    return (TP,FN,FP,TN)
+
+
+#--------------------------------------
 def accuracy(right,all_test):
     a=right/all_test
     return a

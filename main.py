@@ -7,6 +7,8 @@ import logistic_regression as logreg
 from sklearn.model_selection import train_test_split
 ##--------------------MAIN------------------------
 #print('mainnnnnnnnn')
+from csv_handle import contain_row
+
 path = 'data.csv'
 name = 'ChestPain'
 df_org = pd.read_csv(path)
@@ -18,7 +20,7 @@ df=df_org.__deepcopy__()
 #print(df_org)
 # df.drop(df.columns[0], axis=1, inplace=True)  # because it add a new colum when we copy
 # df.to_csv(new_path, encoding='utf-8', index=False)#
-print(df.shape)
+# print(df.shape)
 
 
 if __name__ == "__main__":
@@ -86,7 +88,8 @@ if __name__ == "__main__":
 
     ###################################################################
     col = csv_org.contain_col(3,df_org)
-#    print(col)
+
+
     csv_org.split_col_data('ChestPain', df2)
     csv_org.split_col_data('Thal',  df2)
     csv_org.split_col_data('AHD', df2)
@@ -100,27 +103,56 @@ if __name__ == "__main__":
     df2.to_csv(new_path, encoding='utf-8', index=False)
   #  print(csv_org.recognizeColByNum(df2,15))
    # csv_org.normalization(df2,15)
-    print(df2)
+   #  print(df2)
 
     # df2.to_csv(new_path, encoding='utf-8', index=False)
     # print(df2.shape)
     print(" check logistic regression  methods  ")
 
 
+
 #    sum=logreg.lgReg(v_theta,df2)
 #     print('sum',sum)
-    v_theta = logreg.random_theta(df2)
-    print('theta',v_theta)
+#     v_theta = logreg.random_theta(df2)
+#     print('theta',v_theta)
 #    betterTheta = logreg.gradientDescent(v_theta,0.9999999999999, df2,1,5,0.0000000000000003)
     #logreg.gradientDescentIter(v_theta,0.5, df2,1)
 #    print('better', betterTheta)
+
+    v_theta=logreg.random_theta(df2)
+    # sum=logreg.lgReg(v_theta,df2)
+    # print('sum',sum)
+    # print('theta',v_theta)
+    betterTheta = logreg.gradientDescent(v_theta,0.9999999999999, df2,1,5,0.0000000000000003)
+    #logreg.gradientDescentIter(v_theta,0.5, df2,1)
+    # print('better', betterTheta)
+
     XMatrix=logreg.x_matrix(df2)
     y=logreg.y_vector(df2)
-    print('XMatrix.shape ' ,len(XMatrix),len(XMatrix[0]))
-    print('y.shape ', len(y))
+    # print('XMatrix.shape ' ,len(XMatrix),len(XMatrix[0]))
+    # print('y.shape ', len(y))
     X_train, X_test, y_train, y_test = train_test_split(XMatrix, y, test_size = 0.25, random_state = 42)
+
     print('xt ',X_train)
     print('xt[0] ', X_train[0])
+    # h=logreg.h_func(betterTheta, X_test)
+    # print(h)
+
+    # logreg.classification(betterTheta, X_test)
 #    logreg.plot(XRow, yi,df2)
   #  logreg.print_graph()
+
+    # for i in range(len(X_test)):
+    #     xi=X_train[i]
+    #     # print(xi)
+    #     h=logreg.classification(betterTheta, xi)
+    #     print(i,h)
+    #
+    TP, FN, FP, TN=logreg.predicted_Value(X_test, betterTheta, y_test)
+    print(TP, FN, FP, TN)
+
+
+
+
+
     print(" finsh check csv_org methods  ")

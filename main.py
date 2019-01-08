@@ -149,8 +149,31 @@ if __name__ == "__main__":
     #     h=logreg.classification(betterTheta, xi)
     #     print(i,h)
     #
+
+    #########################################333
+    #display errors
     TP, FN, FP, TN=logreg.predicted_Value(X_test, betterTheta, y_test)
-    print(TP, FN, FP, TN)
+    # print(TP, FN, FP, TN)
+    right=TP+TN
+    all_test=len(X_test)
+    accuracy=logreg.accuracy(right, all_test)
+    print("accuracy=",accuracy)
+    error=logreg.error(accuracy)
+    print("error=",error)
+    recall=logreg.recall(TP,FN)
+    print("recall=",recall)
+    precision=logreg.precision(TP,FP)
+    print("precision=",precision)
+    f_score=logreg.F_score(recall,precision)
+    print("F_score=",f_score)
+    # true positive rate
+    tpr=logreg.TPR(TP,FN)
+    print("true positive rate (TPR)=",tpr)
+    # false positive rate
+    fpr=logreg.FPR(FP, TN)
+    print("false positive rate(FPR)=",fpr)
+
+
 
 
 

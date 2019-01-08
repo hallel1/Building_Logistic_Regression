@@ -20,7 +20,7 @@ normal=[0,0,1,0]
 reversable=[0,0,0,1]
 
 #--------------------Methods-----------------------------
-
+#Returns row content from the file (information about one patient)
 def contain_row(row_num,df):
     rowList = []
     for j in range(df.shape[1]):# run on the num of cols
@@ -30,6 +30,7 @@ def contain_row(row_num,df):
 
     return rowList
 #---------------------------------------
+#Returns col content
 def contain_col(col_num,df):
     colList = []
     for j in range(df.shape[0]):# run on the num of rows
@@ -38,10 +39,13 @@ def contain_col(col_num,df):
     return colList
 
 #---------------------------------------
-
+#A method that checks whether the cell is empty- no information
 def isNaN(val):
     return val != val or val==''
 #-------------------------------
+
+
+
 def averageCol(col):
     #didnt count nun lines, flagNaN is 1 if there are nan
 
@@ -67,6 +71,7 @@ def recognizeColByNum(file,col_num):
 
     return colName
 #-------------------------------
+
 def replaceNaN(file,col_num,avg):
     col = contain_col(col_num, file)  # create list from row
     rowNum=0
@@ -102,6 +107,8 @@ def replaceNaN(file,col_num,avg):
 #    print('after')
 #    print(col)
 #-------------------------------
+
+#A method that normalizes col in the file
 def normalization(file, col_num):
     col = contain_col(col_num, file)  # create list from row
     average,line_count,flagNaN=averageCol(col)
@@ -132,6 +139,9 @@ def normalization(file, col_num):
 
 
 # -------------------------------
+#A method that splits the column with string categories to the number of categories
+# it has, each new column receives the value of the category,
+# the cells in the column are marked with one where the category is the same in the original column and the rest  is zero
 def split_col_data(col_name,df2):
      length= df2.shape[0]
      col_num =df2.columns.get_loc(col_name)
@@ -198,7 +208,7 @@ def split_col_data(col_name,df2):
 
 # -------------------------------
 
-
+#A method that normalizes all col in the file
 def normalizationAll(file):
     colNum=file.shape[1]
     for colIndex in range(1,colNum-1):  # run on the num of cols

@@ -85,7 +85,7 @@ if __name__ == "__main__":
 
     ###################################################################
     col = csv_org.contain_col(3,df_org)
-    print(col)
+    # print(col)
     csv_org.split_col_data('ChestPain', df2)
     csv_org.split_col_data('Thal',  df2)
     csv_org.split_col_data('AHD', df2)
@@ -97,17 +97,19 @@ if __name__ == "__main__":
    # print(df2)
     csv_org.normalizationAll(df2)
     df2.to_csv(new_path, encoding='utf-8', index=False)
-  #  print(csv_org.recognizeColByNum(df2,15))
-   # csv_org.normalization(df2,15)
+  #  print(csv_org.recognizeColByNum(df2,15))ס
+
+    csv_org.normalization(df2,15)
     print(df2)
-
-    # df2.to_csv(new_path, encoding='utf-8', index=False)
-    # print(df2.shape)
-    print(" check logistic regression  methods  ")
-    v_thata=logreg.random_thata(df2)
-    sum,XRow,yi=logreg.lgReg(v_thata,df2)
-    print(sum)
-
-    logreg.plot(XRow, yi,df2)
-
-    print(" finsh check csv_org methods  ")
+   #
+   #  # df2.to_csv(new_path, encoding='utf-8', index=False)
+   #  # print(df2.shape)
+   #  print(" check logistic regression  methods  ")
+   #  v_thata=logreg.random_thata(df2)
+   #  sum,XRow,yi=logreg.lgReg(v_thata,df2)
+   #  print(sum)
+   #
+   #  logreg.plot(XRow, yi,df2)
+   #
+   #  print(" finsh check csv_org methods  ")
+    logreg.print_graph()

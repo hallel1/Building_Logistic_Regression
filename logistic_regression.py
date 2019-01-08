@@ -87,26 +87,38 @@ def random_thata(df2):
         return vector_thata
 
 
-# #-----------MAIM---------------------
-# if __name__ == "__main__":
-#     print(1/(1+e**-2))
+
+#---------------------------
 def plot(X,y,df):
     #count_row = df.shape[0]  # parameter m
     #for i in range(0, count_row)    :
     for i in range(df.shape[0]):  # range about num of row
        XRow =contain_row(i, df)
-       X = X[:-1]  # all row except the last cell
-    healthy = YCol[y == 1]
-    # filter out the applicants that din't get admission
-    not_admitted = df.loc[y == 0]
+
+    # healthy = YCol[y == 1]
+    # # filter out the applicants that din't get admission
+    # not_admitted = df.loc[y == 0]
 
     # plots
-    plt.scatter(admitted.iloc[:, 0], admitted.iloc[:, 1], s=10, label='Admitted')
-    plt.scatter(not_admitted.iloc[:, 0], not_admitted.iloc[:, 1], s=10, label='Not Admitted')
+    # plt.scatter(admitted.iloc[:, 0], admitted.iloc[:, 1], s=10, label='Admitted')
+    # plt.scatter(not_admitted.iloc[:, 0], not_admitted.iloc[:, 1], s=10, label='Not Admitted')
 
 
-    plt.plot(X,y, label='Decision Boundary')
-    plt.xlabel('Marks in 1st Exam')
-    plt.ylabel('Marks in 2nd Exam')
+    # plt.plot(X,y, label='Decision Boundary')
+    # plt.xlabel('Marks in 1st Exam')
+    # plt.ylabel('Marks in 2nd Exam')
+    # plt.legend()
+    # plt.show()
+
+
+#---------------------------
+ # example how to draw graph
+def print_graph():
+    x=[2,5,6,7,8,9]
+    y=[1,2,3,4,5,6]
+    # plt.hist(x,y,histtype='bar',rwidth=0.8)#malben
+    plt.scatter(x,y,label='skitscat',color='blue',marker='o',s=50)
+    plt.xlabel('x')
+    plt.ylabel('y')
     plt.legend()
     plt.show()

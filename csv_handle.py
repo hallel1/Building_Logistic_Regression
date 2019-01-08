@@ -128,7 +128,7 @@ def normalization(file, col_num):
         index+=1
     colName = recognizeColByNum(file, col_num)
     file[colName]=normalization_col#Updating the column to be normalized
-    print(col)
+    # print(col)
 
 
 

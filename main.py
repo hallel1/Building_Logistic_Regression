@@ -81,9 +81,7 @@ if __name__ == "__main__":
     # df2.insert(23, 'Yes', np.nan)
     # df2.insert(24, 'No', np.nan)
 
-
-
-
+    logreg.print_graph()
 
     df2.to_csv(new_path, encoding='utf-8', index=False)
 

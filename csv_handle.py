@@ -204,10 +204,6 @@ def split_col_data(col_name,df2):
 # -------------------------------
 
 
-
-
-# -------------------------------
-
 #A method that normalizes all col in the file
 def normalizationAll(file):
     colNum=file.shape[1]

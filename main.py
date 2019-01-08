@@ -114,5 +114,9 @@ if __name__ == "__main__":
     #logreg.gradientDescentIter(v_theta,0.5, df2,1)
     print('better', betterTheta)
 #    logreg.plot(XRow, yi,df2)
-    logreg.print_graph()
+#     logreg.print_graph()
+
+
+
+
     print(" finsh check csv_org methods  ")

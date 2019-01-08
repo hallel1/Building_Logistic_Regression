@@ -8,7 +8,11 @@ from csv_handle import contain_row
 import matplotlib.pyplot as plt
 
 
-
+#--------------------Variables----------------------------
+true=1
+false=0
+positive=1
+negative=0
 
 
 
@@ -144,7 +148,7 @@ def plot(X,y,df):
     '''
 
  # example how to draw graph
-'''def print_graph():
+def print_graph():
     x=[2,5,6,7,8,9]
     y=[1,2,3,4,5,6]
     # plt.hist(x,y,histtype='bar',rwidth=0.8)#malben
@@ -152,4 +156,17 @@ def plot(X,y,df):
     plt.xlabel('x')
     plt.ylabel('y')
     plt.legend()
-    plt.show()'''
+    plt.show()
+
+#------------------------------------------
+def accuracy(right,all_test):
+    a=right/all_test
+    return a
+
+#-----------------------------------
+def error(accuracy):
+    err=1-accuracy
+    return err
+
+
+#-----------------------------------

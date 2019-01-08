@@ -18,7 +18,7 @@ df=df_org.__deepcopy__()
 #print(df_org)
 # df.drop(df.columns[0], axis=1, inplace=True)  # because it add a new colum when we copy
 # df.to_csv(new_path, encoding='utf-8', index=False)#
-print(df.shape)
+# print(df.shape)
 
 
 if __name__ == "__main__":

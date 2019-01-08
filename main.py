@@ -5,6 +5,7 @@ from pandas import DataFrame
 import csv_handle as csv_org
 import logistic_regression as logreg
 from sklearn.model_selection import train_test_split
+
 ##--------------------MAIN------------------------
 #print('mainnnnnnnnn')
 path = 'data.csv'
@@ -123,4 +124,8 @@ if __name__ == "__main__":
     print('xt[0] ', X_train[0])
 #    logreg.plot(XRow, yi,df2)
   #  logreg.print_graph()
+
+    #logreg.plot(X_train[0], y_train[0])
+
+
     print(" finsh check csv_org methods  ")

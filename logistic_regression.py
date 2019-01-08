@@ -143,6 +143,8 @@ def cost(theta, x_train,y_train):
     sum = -1 * sum #####check if ok to mult by -1
     sum = (1/count_row) * sum #####check if here!!!
     return (sum)
+#------------------------
+
 '''
 def plot(X,y,df):
     #count_row = df.shape[0]  # parameter m

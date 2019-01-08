@@ -61,11 +61,10 @@ def averageCol(col):
     return (average,line_count,flagNaN)
 #-------------------------------
 def recognizeColByNum(file,col_num):
-    #if col_num==0
-#    print('j')
+
     header=list(file.columns.values)
     colName=header[col_num]
-#    print(colName)
+
     return colName
 #-------------------------------
 def replaceNaN(file,col_num,avg):
@@ -128,7 +127,7 @@ def normalization(file, col_num):
         index+=1
     colName = recognizeColByNum(file, col_num)
     file[colName]=normalization_col#Updating the column to be normalized
-    print(col)
+   # print(col)
 
 
 

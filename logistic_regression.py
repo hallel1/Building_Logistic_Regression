@@ -21,7 +21,7 @@ def sigmoid (z):
 
 #----------------------------
 
-def h_func( thata,X):
+def h_func( theta,X):
 
     # a_list=[1,2,3]
     # b_list=[1,2,3]
@@ -30,41 +30,38 @@ def h_func( thata,X):
     # z=sum(z)
     # print (z)
 
-    z=[a*b for a, b in zip(thata, X)]
-
+    z=[a*b for a, b in zip(theta, X)]
     z = sum(z)
+    #z=np.dot(X, theta)
+    #print('z')
+    #print(z)
     g=sigmoid(z)
     return g
 
 #----------------------------
 
 # fun y^ - for Classification
-def  classification( thata,X):
-    h= h_func( thata,X)
+def  classification( theta,X):
+    h= h_func( theta,X)
     if h>=0.5:
         return 1
     else:
         return 0
 
-
-
-"""
-X- vector 
-"""
 #---------------------------
-def lgReg_iter(thata, X,y):# X is vector of row
-    h_of_xi=  h_func(thata,X)
+def lgReg_iter(theta, X,y):# X is vector of row
+    h_of_xi=  h_func(theta,X)
     calc= y * np.math.log(h_of_xi)+ (1-y)* np.math.log(1- h_of_xi)#######check!!
     return calc
 
 #---------------------------
-# def probability_func(thata,X_matrix,y):
-#     h =h_func( thata,X)
+# def probability_func(theta,X_matrix,y):
+#     h =h_func( theta,X)
 #     prob=(h**y)*(1-h)**(1-y)
 #     return prob
 
 #---------------------------
-def lgReg(thata, file):
+def lgReg(theta, file):
     sum = 0
 
     count_row = file.shape[0]# parameter m
@@ -73,30 +70,64 @@ def lgReg(thata, file):
         yi = yi[-1]
         X=contain_row(i,file)
         X=X[:-1]# all row except the last cell
-        sum+=lgReg_iter(thata, X, yi)
+        sum+=lgReg_iter(theta, X, yi)
 
-
-    return (X,yi,sum)
+    sum = -1 * sum #####check if ok to mult by -1
+    sum = (1/count_row) * sum #####check if here!!!
+    return (sum)
 
 #---------------------------
-def random_thata(df2):
-    for i in range(df2.shape[1]):#range about num of col
-        vector_thata=[]
-        vector_thata.append(np.random.random())
-        # print(i,vector_thata)
-        return vector_thata
+def random_theta(df):
+    vector_theta = []
+    for i in range(df.shape[1]):#range about num of col
+        vector_theta.append(np.random.random())
+    return vector_theta
 
 
-# #-----------MAIM---------------------
-# if __name__ == "__main__":
-#     print(1/(1+e**-2))
+#-------------------------------
+def gradient(theta, file,indexRow):
+    gradientVal=0
+   # count_col = file.shape[1]
+    X = contain_row(indexRow, file)
+    X = X[:-1]  # all row except the last cell
+    yi = contain_row(indexRow, file)
+    yi = yi[-1]
+    m = file.shape[0]  # num of row
+    h=h_func(theta, X)
+    #gradientVal=(1 / m) * np.dot(X.transpose(), h - yi)####maybe need x.t (transpose)
+    print('col',len(X))
+    for j in range(len(X)):
+        gradientVal+=(h - yi)*X[j]
+    gradientVal=(1 / m) *gradientVal
+    return gradientVal
+#------------------------------------------
+def gradientDescentIter(theta,alpha, file,indexRow):
+    gradientVal=gradient(theta, file, indexRow)
+    theta=theta+alpha*gradientVal
+    return theta
+#------------------------------------------
+def gradientDescent(theta,alpha, file,indexRow,maxIter,difference):
+
+    for j in range(maxIter):
+        diffOrg= theta[0]
+        theta=gradientDescentIter(theta, alpha, file, indexRow)
+        print('new theta',theta)
+        if abs(diffOrg-theta[0]) <difference:#####checkkk
+            print('yes diff')
+            break
+    return theta
+'''
 def plot(X,y,df):
     #count_row = df.shape[0]  # parameter m
     #for i in range(0, count_row)    :
+    listHealpy=[]
     for i in range(df.shape[0]):  # range about num of row
-       XRow =contain_row(i, df)
-       X = X[:-1]  # all row except the last cell
-    healthy = YCol[y == 1]
+        row =contain_row(i, df)
+        healthy = row[y == 1]
+        #healthyX=healthy[:-1]# all row except the last cell
+        print('healpy')
+        print(healthy)
+
     # filter out the applicants that din't get admission
     not_admitted = df.loc[y == 0]
 
@@ -110,3 +141,4 @@ def plot(X,y,df):
     plt.ylabel('Marks in 2nd Exam')
     plt.legend()
     plt.show()
+    '''

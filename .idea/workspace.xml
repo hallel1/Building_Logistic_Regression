@@ -16,8 +16,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="127" column="5" selection-start-line="127" selection-start-column="5" selection-end-line="127" selection-end-column="5" />
+            <state relative-caret-position="512">
+              <caret line="146" column="5" selection-start-line="146" selection-start-column="5" selection-end-line="146" selection-end-column="5" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -37,8 +37,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/logistic_regression.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="128" column="31" selection-start-line="128" selection-start-column="16" selection-end-line="128" selection-end-column="31" />
+            <state relative-caret-position="-2378">
+              <caret line="152" lean-forward="true" selection-start-line="152" selection-end-line="152" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -67,11 +67,11 @@
       <find>contain_row</find>
       <find>h_</find>
       <find>train_test_split</find>
-      <find>gradientDescent</find>
       <find>0.39463217528275296,</find>
       <find>0.39463217528275296, 0.6862024383574895, -0.28660575211055495, -0.9516619028617735</find>
       <find>print</find>
       <find>pri</find>
+      <find>gradientDescent</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -88,8 +88,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/csv_handle.py" />
-        <option value="$PROJECT_DIR$/logistic_regression.py" />
         <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/logistic_regression.py" />
       </list>
     </option>
   </component>
@@ -307,8 +307,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="127" column="5" selection-start-line="127" selection-start-column="5" selection-end-line="127" selection-end-column="5" />
+        <state relative-caret-position="512">
+          <caret line="146" column="5" selection-start-line="146" selection-start-column="5" selection-end-line="146" selection-end-column="5" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
@@ -324,8 +324,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/logistic_regression.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="128" column="31" selection-start-line="128" selection-start-column="16" selection-end-line="128" selection-end-column="31" />
+        <state relative-caret-position="-2378">
+          <caret line="152" lean-forward="true" selection-start-line="152" selection-end-line="152" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>

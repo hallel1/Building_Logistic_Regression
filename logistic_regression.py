@@ -8,19 +8,6 @@ from csv_handle import contain_row
 import matplotlib.pyplot as plt
 
 
-# #--------------------Variables----------------------------
-# true=1
-# false=0
-# positive=1
-# negative=0
-TP=0#  was predicted that the patient is sick and was right ( y=1, h=1 )
-FN=0# the model predicted that the patient is healthy  and was wrong( y=1, h=0 )
-FP=0# the model predicted that the patient is sick and was wrong (y=0,h=1)
-TN=0# the model predicted that the patient is healthy and was right (y=0,h=0)
-
-
-
-
 #--------------------Methods-----------------------------
 
 #calc sigmond func  for calcing the  h  later
@@ -32,13 +19,6 @@ def sigmoid (z):
 
 def h_func( theta,X):
 
-    # a_list=[1,2,3]
-    # b_list=[1,2,3]
-    # z=[a * b for a, b in zip(a_list, b_list)]
-    # print(z)
-    # z=sum(z)
-    # print (z)
-    # for i in range(df.shape[])
 
     z=[a*b for a, b in zip(theta, X)]
     z = sum(z)
@@ -73,16 +53,16 @@ def gradientDescentIter(theta,alpha,xi_vec,yi,numTrain):
     theta=theta+alpha*gradientVal
     return theta
 #------------------------------------------
-def gradientDescent(theta,alpha,maxIter,difference,xi_vec,yi,numTrain):
+'''def gradientDescent(theta,alpha,maxIter,difference,xi_vec,yi,numTrain):
 
     for j in range(maxIter):
-        diffOrg= theta[0]
+     #   diffOrg= theta[0]
         theta=gradientDescentIter(theta, alpha,xi_vec,yi,numTrain)
-        print('new theta',theta)
-        if abs(diffOrg-theta[0]) <difference:#####checkkk
-            print('yes diff')
+    #    print('new theta',theta)
+    #    if abs(diffOrg-theta[0]) <difference:#####checkkk
+    #        print('yes diff')
             break
-    return theta
+    return theta'''
 #------------------------------------------
 # fun y^ - for Classification
 def  classification( theta,X):
@@ -131,11 +111,24 @@ def lgReg_iter(theta, X,y):# X is vector of row
 #---------------------------
 
 def lgReg(theta, x_train,y_train,alpha, maxIter, difference):
-    costVal=cost(theta, x_train, y_train)
+    costVec=[]
+    costVal = cost(theta, x_train, y_train)
+    costVec.append(costVal)
     index=0##########change
-    betterTheta=gradientDescent(theta,alpha,maxIter,difference,x_train[index],y_train[index],len(y_train))
-    costVal = cost(betterTheta, x_train, y_train)
-    return costVal
+
+    for i in range(maxIter):
+
+        theta=gradientDescentIter(theta, alpha,x_train[index],y_train[index],len(y_train))
+        newCost = cost(theta, x_train, y_train)
+        costVec.append(newCost)
+        if abs(costVec[i]-newCost) <difference:#####checkkk
+    #        print('yes diff')
+            break
+
+    # betterTheta=gradientDescent(theta,alpha,maxIter,difference,x_train[index],y_train[index],len(y_train))
+
+    return (theta,costVec)
+#----------------------------------------------------
 
 def cost(theta, x_train,y_train):
     sum = 0

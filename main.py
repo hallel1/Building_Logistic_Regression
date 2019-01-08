@@ -134,8 +134,8 @@ if __name__ == "__main__":
     # print('y.shape ', len(y))
     X_train, X_test, y_train, y_test = train_test_split(XMatrix, y, test_size = 0.25, random_state = 42)
 
-    print('xt ',X_train)
-    print('xt[0] ', X_train[0])
+    #print('xt ',X_train)
+    #print('xt[0] ', X_train[0])
     # h=logreg.h_func(betterTheta, X_test)
     # print(h)
 

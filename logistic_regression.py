@@ -44,7 +44,7 @@ def gradient(theta,xi_vec,yi,numTrain):
     #gradientVal=(1 / m) * np.dot(X.transpose(), h - yi)####maybe need x.t (transpose)
     print('col',len(xi_vec))
     for j in range(len(xi_vec)):
-        gradientVal+=(h - yi)*xi_vec[j]
+        gradientVal+=(yi-h)*xi_vec[j]###check y-h or h-y
     gradientVal=(1 / numTrain) *gradientVal
     return gradientVal
 #------------------------------------------
@@ -167,7 +167,7 @@ def gradient(theta, file,indexRow):
     #gradientVal=(1 / m) * np.dot(X.transpose(), h - yi)####maybe need x.t (transpose)
     # print('col',len(X))
     for j in range(len(X)):
-        gradientVal+=(h - yi)*X[j]
+        gradientVal+=(yi-h)*X[j]
     gradientVal=(1 / m) *gradientVal
     return gradientVal
 #------------------------------------------
@@ -215,7 +215,7 @@ def plot(X,y,df):
     '''
 
  # example how to draw graph
-'''def print_graph():
+def print_graph():
     x=[2,5,6,7,8,9]
     y=[1,2,3,4,5,6]
     # plt.hist(x,y,histtype='bar',rwidth=0.8)#malben
@@ -223,7 +223,7 @@ def plot(X,y,df):
     plt.xlabel('x')
     plt.ylabel('y')
     plt.legend()
-    plt.show()'''
+    plt.show()
 
 
 

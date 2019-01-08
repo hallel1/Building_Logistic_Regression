@@ -4,6 +4,7 @@ import pandas as pd
 from pandas import DataFrame
 import csv_handle as csv_org
 import logistic_regression as logreg
+from sklearn.model_selection import train_test_split
 ##--------------------MAIN------------------------
 #print('mainnnnnnnnn')
 path = 'data.csv'
@@ -113,5 +114,5 @@ if __name__ == "__main__":
     #logreg.gradientDescentIter(v_theta,0.5, df2,1)
     print('better', betterTheta)
 #    logreg.plot(XRow, yi,df2)
-   # logreg.print_graph()
+    logreg.print_graph()
     print(" finsh check csv_org methods  ")

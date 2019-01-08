@@ -74,9 +74,9 @@ if __name__ == "__main__":
     df2.insert(7, 'nontypical', np.nan)
     #--------------------------------------------
     df2.insert(18, 'fixed', np.nan)
-    df2.insert(19, 'NaN', np.nan)
-    df2.insert(20, 'normal', np.nan)
-    df2.insert(21, 'reversable', np.nan)
+    # df2.insert(19, 'NaN', np.nan)
+    df2.insert(19, 'normal', np.nan)
+    df2.insert(20, 'reversable', np.nan)
     # --------------------------------------------
     # df2.insert(23, 'Yes', np.nan)
     # df2.insert(24, 'No', np.nan)

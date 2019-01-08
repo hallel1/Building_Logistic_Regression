@@ -158,15 +158,3 @@ def print_graph():
     plt.legend()
     plt.show()
 
-#------------------------------------------
-def accuracy(right,all_test):
-    a=right/all_test
-    return a
-
-#-----------------------------------
-def error(accuracy):
-    err=1-accuracy
-    return err
-
-
-#-----------------------------------

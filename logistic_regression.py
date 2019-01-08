@@ -39,63 +39,6 @@ def h_func( theta,X):
     return g
 
 #----------------------------
-
-# fun y^ - for Classification
-def  classification( theta,X):
-    h= h_func( theta,X)
-    if h>=0.5:
-        return 1
-    else:
-        return 0
-
-#---------------------------
-def lgReg_iter(theta, X,y):# X is vector of row
-    h_of_xi=  h_func(theta,X)
-    calc= y * np.math.log(h_of_xi)+ (1-y)* np.math.log(1- h_of_xi)#######check!!
-    return calc
-
-#---------------------------
-# def probability_func(theta,X_matrix,y):
-#     h =h_func( theta,X)
-#     prob=(h**y)*(1-h)**(1-y)
-#     return prob
-
-#---------------------------
-def x_matrix(file):
-
-    X_mat=[]
-    for i in range(file.shape[0]):  # run on the num of rows
-        X_mat.append(xi_vector(file,i))
-    return X_mat
-def y_vector(file):
-    yVec=[]
-    for i in range(file.shape[0]):  # run on the num of cols
-        yVec.append(yi_val(file,i))
-    return yVec
-
-def xi_vector(file,i):
-    X = contain_row(i, file)
-    X = X[:-1]  # all row except the last cell
-    return X
-
-def yi_val(file,i):
-    yi = contain_row(i, file)
-    yi = yi[-1]
-    return yi
-
-def lgReg(theta, file):
-    sum = 0
-
-    count_row = file.shape[0]# parameter m
-    for i in range(0, count_row ):
-        yi= yi_val(file, i)
-        X = xi_vector(file, i)
-        sum+=lgReg_iter(theta, X, yi)
-
-    sum = -1 * sum #####check if ok to mult by -1
-    sum = (1/count_row) * sum #####check if here!!!
-    return (sum)
-
 #---------------------------
 def random_theta(df):
     vector_theta = []
@@ -136,6 +79,65 @@ def gradientDescent(theta,alpha, file,indexRow,maxIter,difference):
             print('yes diff')
             break
     return theta
+# fun y^ - for Classification
+def  classification( theta,X):
+    h= h_func( theta,X)
+    if h>=0.5:
+        return 1
+    else:
+        return 0
+
+#---------------------------
+# def probability_func(theta,X_matrix,y):
+#     h =h_func( theta,X)
+#     prob=(h**y)*(1-h)**(1-y)
+#     return prob
+
+#---------------------------
+def x_matrix(file):
+
+    X_mat=[]
+    for i in range(file.shape[0]):  # run on the num of rows
+        X_mat.append(xi_vector(file,i))
+    return X_mat
+def y_vector(file):
+    yVec=[]
+    for i in range(file.shape[0]):  # run on the num of cols
+        yVec.append(yi_val(file,i))
+    return yVec
+
+def xi_vector(file,i):
+    X = contain_row(i, file)
+    X = X[:-1]  # all row except the last cell
+    return X
+
+def yi_val(file,i):
+    yi = contain_row(i, file)
+    yi = yi[-1]
+    return yi
+#---------------------------
+
+def lgReg_iter(theta, X,y):# X is vector of row
+    h_of_xi=  h_func(theta,X)
+    calc= y * np.math.log(h_of_xi)+ (1-y)* np.math.log(1- h_of_xi)#######check!!
+    return calc
+
+#---------------------------
+
+def lgReg(theta, file):
+    sum = 0
+
+    count_row = file.shape[0]# parameter m
+    for i in range(0, count_row ):
+        yi= yi_val(file, i)
+        X = xi_vector(file, i)
+        sum+=lgReg_iter(theta, X, yi)
+
+    sum = -1 * sum #####check if ok to mult by -1
+    sum = (1/count_row) * sum #####check if here!!!
+    return (sum)
+
+
 '''
 def plot(X,y,df):
     #count_row = df.shape[0]  # parameter m

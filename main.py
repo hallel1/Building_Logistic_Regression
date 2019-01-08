@@ -18,7 +18,7 @@ df=df_org.__deepcopy__()
 #print(df_org)
 # df.drop(df.columns[0], axis=1, inplace=True)  # because it add a new colum when we copy
 # df.to_csv(new_path, encoding='utf-8', index=False)#
-# print(df.shape)
+print(df.shape)
 
 
 if __name__ == "__main__":
@@ -114,9 +114,5 @@ if __name__ == "__main__":
     #logreg.gradientDescentIter(v_theta,0.5, df2,1)
     print('better', betterTheta)
 #    logreg.plot(XRow, yi,df2)
-#     logreg.print_graph()
-
-
-
-
+    logreg.print_graph()
     print(" finsh check csv_org methods  ")

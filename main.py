@@ -11,7 +11,6 @@ from sklearn.model_selection import train_test_split
 from csv_handle import contain_row
 
 path = 'hearts.csv'
-name = 'ChestPain'
 df_org = pd.read_csv(path)
 # df_org.to_csv('changeData.csv')
 # new_path = 'changeData.csv'
@@ -65,9 +64,9 @@ if __name__ == "__main__":
    # print(" -------- ")
    # print(csv_org.contain_row(87,df2))
     ###################################################################3
-    df2.to_csv('changeData.csv')
-    new_path = 'changeData.csv'
-    df2.to_csv(new_path, encoding='utf-8', index=False)
+    # df2.to_csv('changeData.csv')
+    # new_path = 'changeData.csv'
+    # df2.to_csv(new_path, encoding='utf-8', index=False)
     df2.insert(1, 'v', 1)
     df2.insert(5, 'typical',  np.nan)
     df2.insert(6, 'asymptomatic', np.nan)
@@ -87,11 +86,13 @@ if __name__ == "__main__":
     # afther spliting the cols del the orginal
     df2.__delitem__('ChestPain')
     df2.__delitem__('Thal')
-    print(df2.shape)
+    # print(df2.shape)
+    print(df2)
 
 
 
-    df2.to_csv(new_path, encoding='utf-8', index=False)
+
+    # df2.to_csv(new_path, encoding='utf-8', index=False)
 
     ###################################################################
     col = csv_org.contain_col(3,df_org)
@@ -100,10 +101,10 @@ if __name__ == "__main__":
 
     
 
-    df2.to_csv(new_path, encoding='utf-8', index=False)
+    # df2.to_csv(new_path, encoding='utf-8', index=False)
    # print(df2)
     csv_org.normalizationAll(df2)
-    df2.to_csv(new_path, encoding='utf-8', index=False)
+    # df2.to_csv(new_path, encoding='utf-8', index=False)
   #  print(csv_org.recognizeColByNum(df2,15))
    # csv_org.normalization(df2,15)
    #  print(df2)

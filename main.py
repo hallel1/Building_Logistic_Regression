@@ -158,9 +158,15 @@ if __name__ == "__main__":
 
     #########################################333
     #display errors
+
     '''
     TP, FN, FP, TN=logreg.predicted_Value(X_test, betterTheta, y_test)
     # print(TP, FN, FP, TN)
+
+    threshold=0.5
+    TP, FN, FP, TN=logreg.predicted_Value(X_test, betterTheta, y_test,threshold)
+    print(TP, FN, FP, TN)
+
     right=TP+TN
     all_test=len(X_test)
     accuracy=logreg.accuracy(right, all_test)
@@ -179,7 +185,19 @@ if __name__ == "__main__":
     # false positive rate
     fpr=logreg.FPR(FP, TN)
     print("false positive rate(FPR)=",fpr)
+
 '''
+
+    # print graph roc_curve
+    # print (all_test)
+    logreg.roc_curve_graph(X_test, betterTheta,y_test)
+
+
+
+
+
+
+
 
 
 

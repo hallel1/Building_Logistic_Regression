@@ -133,13 +133,13 @@ if __name__ == "__main__":
     X_train, X_test, y_train, y_test = train_test_split(XMatrix, y, test_size = 0.25, random_state = 42)
 
     v_theta = logreg.random_theta(df2)
-    betterTheta = logreg.gradientDescent(v_theta, 0.9999999999999, df2, 1, 5, 0.0000000000000003)
+    #betterTheta = logreg.gradientDescent(v_theta, 0.9999999999999, df2, 1, 5, 0.0000000000000003)
 
-    # betterTheta, L_thetaVec= logreg.lgReg(v_theta, X_train,y_train,alpha=0.5, maxIter=30, difference=0.01)
+    betterTheta, L_thetaVec= logreg.lgReg(v_theta, X_train,y_train,alpha=0.5, maxIter=30, difference=0.01)
    # logreg.graph_L_theta(L_thetaVec, range(1,100))
 
 
-
+ 
 
     #print('xt ',X_train)
     #print('xt[0] ', X_train[0])

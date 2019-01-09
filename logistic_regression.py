@@ -113,7 +113,7 @@ def lgReg(theta, x_train,y_train,alpha, maxIter, difference):
 
     for i in range(maxIter):
 
-        theta=gradientDescentIter(theta, alpha,x_train[index],y_train[index])
+        theta=gradientDescentIter(theta, alpha,x_train[index],y_train[index],len(y_train))
         newCost = cost(theta, x_train, y_train)
         costVec.append(newCost)
         if abs(costVec[i]-newCost) <difference:#####checkkk
@@ -289,7 +289,7 @@ def roc_curve_graph(X_test, thata, Y_test):
     print(X)
     print(Y)
     # plt.scatter(X, Y, label='skitscat', color='blue', marker='o', s=50)
-    plt.polt(X,Y)
+    plt.plot(X,Y)
     plt.xlabel('x')
     plt.ylabel('y')
     plt.legend()

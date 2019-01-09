@@ -5,6 +5,7 @@ import pandas as pd
 from pandas import DataFrame
 from csv_handle import contain_row
 #from csv_handle import contain_col
+from scipy.integrate import quad
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 
@@ -274,7 +275,6 @@ def FPR(FP,TN):
 def roc_curve_graph(X_test, thata, Y_test):
     num_threshold=20
 
-
     X=[]
     Y=[]
     threshold=0
@@ -289,11 +289,23 @@ def roc_curve_graph(X_test, thata, Y_test):
     print(X)
     print(Y)
     # plt.scatter(X, Y, label='skitscat', color='blue', marker='o', s=50)
+
     plt.plot(X,Y)
     plt.xlabel('x')
     plt.ylabel('y')
+
+    plt.title("ROC CURVE")
+    plt.plot(X,Y,label='"ROC CURVE')
+    plt.xlabel('x - FPR')
+    plt.ylabel('y-TPR')
+
     plt.legend()
     plt.show()
+    for i in range(1,len(X)):
+        ans, err = quad( lambda x:x,X[i-1],X[i])
+
+    print(ans)
+
 
 
 

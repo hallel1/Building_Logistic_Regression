@@ -139,7 +139,7 @@ if __name__ == "__main__":
    # logreg.graph_L_theta(L_thetaVec, range(1,100))
 
 
- 
+
 
     #print('xt ',X_train)
     #print('xt[0] ', X_train[0])

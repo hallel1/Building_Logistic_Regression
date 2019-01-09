@@ -57,6 +57,7 @@ def h_func( theta,X):
 def  classification( theta,X,threshold):
 
     h= h_func( theta,X)
+    print('h', h)
     if h>=threshold:
         return 1
     else:
@@ -94,15 +95,17 @@ def gradient(theta,xi_vec,yi,numTrain):
     gradientVal=0
     h=h_func(theta, xi_vec)
     #gradientVal=(1 / m) * np.dot(X.transpose(), h - yi)####maybe need x.t (transpose)
-    print('col',len(xi_vec))
+    #print('col',len(xi_vec))
     for j in range(len(xi_vec)):
         gradientVal+=(yi-h)*xi_vec[j]###check y-h or h-y
     gradientVal=(1 / numTrain) *gradientVal
     return gradientVal
 #------------------------------------------
-def gradientDescentIter(theta,alpha,xi_vec,yi,numTrain):
-    gradientVal=gradient(theta,xi_vec,yi,numTrain)
-    theta=theta+alpha*gradientVal
+def gradientDescentIter(theta,alpha,x_train,y_train):
+    numTrain=len(y_train)
+    for i in range(numTrain):
+        gradientVal=gradient(theta,x_train[i],y_train[i],numTrain)
+        theta=theta+alpha*gradientVal
     return theta
 #------------------------------------------
 
@@ -110,20 +113,20 @@ def lgReg(theta, x_train,y_train,alpha, maxIter, difference):
     costVec=[]
     costVal = cost(theta, x_train, y_train)
     costVec.append(costVal)
-    index=0##########change
+    countIter=1 #count how match nodes there are in costVec list
 
     for i in range(maxIter):
-
-        theta=gradientDescentIter(theta, alpha,x_train[index],y_train[index],len(y_train))
+        countIter=countIter+1
+        theta=gradientDescentIter(theta, alpha,x_train,y_train)
         newCost = cost(theta, x_train, y_train)
         costVec.append(newCost)
         if abs(costVec[i]-newCost) <difference:#####checkkk
-    #        print('yes diff')
+            print('yes diff', len(costVec))
             break
 
     # betterTheta=gradientDescent(theta,alpha,maxIter,difference,x_train[index],y_train[index],len(y_train))
 
-    return (theta,costVec)
+    return (theta,costVec,countIter)
 #----------------------------------------------------
 
 
@@ -200,7 +203,8 @@ def plot(X,y,df):
 
 def graph_L_theta(costVec,vecIter):
 
-    plt.scatter(costVec,vecIter,label='skitscat',color='blue',marker='o',s=50)
+    #plt.scatter(vecIter,costVec,label='skitscat',color='blue',marker='o',s=50)
+    plt.plot(vecIter,costVec)
     plt.xlabel('iteration')
     plt.ylabel('L(theta)')
     plt.legend()
@@ -273,7 +277,7 @@ def FPR(FP,TN):
 # --------------------------------
 # num of threshols as num of  the example
 def roc_curve_graph(X_test, thata, Y_test):
-    num_threshold=20
+    num_threshold=10
 
     X=[]
     Y=[]

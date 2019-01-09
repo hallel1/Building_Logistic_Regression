@@ -36,8 +36,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/logistic_regression.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="142" column="10" selection-start-line="142" selection-start-column="10" selection-end-line="142" selection-end-column="10" />
+            <state relative-caret-position="236">
+              <caret line="142" column="18" selection-start-line="142" selection-start-column="18" selection-end-line="142" selection-end-column="18" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -54,7 +54,6 @@
       <find>948726471439723</find>
       <find>1.392001908365299</find>
       <find>h_func</find>
-      <find>lgReg_iter</find>
       <find>thata</find>
       <find>colnam</find>
       <find>pr</find>
@@ -76,6 +75,8 @@
       <find>pri</find>
       <find>-</find>
       <find>(1 / m)</find>
+      <find>lgReg_iter</find>
+      <find>cost</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -328,8 +329,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/logistic_regression.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="142" column="10" selection-start-line="142" selection-start-column="10" selection-end-line="142" selection-end-column="10" />
+        <state relative-caret-position="236">
+          <caret line="142" column="18" selection-start-line="142" selection-start-column="18" selection-end-line="142" selection-end-column="18" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>

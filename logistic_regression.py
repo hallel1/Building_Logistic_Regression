@@ -140,7 +140,7 @@ def cost(theta, x_train,y_train):#L(theta) func
         print('x_train[i] expecting get vector ',x_train[i])
         sum+=lgReg_iter(theta, X, yi)
 
-    sum = 1 * sum #####check if ok to mult by -1
+    #####check if ok to mult by -1
     sum = (1/count_row) * sum #####check if here!!!
     return (sum)
 

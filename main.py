@@ -135,7 +135,7 @@ if __name__ == "__main__":
     v_theta =np.zeros(df.shape[1])#logreg.random_theta(df2)
     #betterTheta = logreg.gradientDescent(v_theta, 0.9999999999999, df2, 1, 5, 0.0000000000000003)
 
-    betterTheta, L_thetaVec,countIter= logreg.lgReg(v_theta, X_train,y_train,alpha=0.0001, maxIter=5000, difference=0.000000001)
+    betterTheta, L_thetaVec,countIter= logreg.lgReg(v_theta, X_train,y_train,alpha=0.005, maxIter=500, difference=0.000000001)
     print('l len ',L_thetaVec)
     print('l len ',len(L_thetaVec))
     print('countIter ', countIter)

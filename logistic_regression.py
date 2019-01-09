@@ -6,6 +6,7 @@ from pandas import DataFrame
 from csv_handle import contain_row
 #from csv_handle import contain_col
 import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
 
 
 #--------------------Methods-----------------------------
@@ -65,10 +66,10 @@ def gradientDescentIter(theta,alpha,xi_vec,yi,numTrain):
     return theta'''
 #------------------------------------------
 # fun y^ - for Classification
-def  classification( theta,X):
+def  classification( theta,X,threshold):
 
     h= h_func( theta,X)
-    if h>=0.5:
+    if h>=threshold:
         return 1
     else:
         return 0
@@ -187,6 +188,9 @@ def gradientDescent(theta,alpha, file,indexRow,maxIter,difference):
             break
     return theta
 
+
+#
+
 '''
 def plot(X,y,df):
     #count_row = df.shape[0]  # parameter m
@@ -214,16 +218,6 @@ def plot(X,y,df):
     plt.show()
     '''
 
- # example how to draw graph
-def print_graph():
-    x=[2,5,6,7,8,9]
-    y=[1,2,3,4,5,6]
-    # plt.hist(x,y,histtype='bar',rwidth=0.8)#malben
-    plt.scatter(x,y,label='skitscat',color='blue',marker='o',s=50)
-    plt.xlabel('x')
-    plt.ylabel('y')
-    plt.legend()
-    plt.show()
 
 
 
@@ -232,7 +226,7 @@ def print_graph():
 # h- predicded value
 # y- real value (Vector of values)
 #
-def predicted_Value (X_test,thata,Y_test):
+def predicted_Value (X_test,thata,Y_test,threshold):
     TP = 0  # was predicted that the patient is sick and was right ( y=1, h=1 )
     FN = 0  # the model predicted that the patient is healthy  and was wrong( y=1, h=0 )
     FP = 0  # the model predicted that the patient is sick and was wrong (y=0,h=1)
@@ -240,7 +234,7 @@ def predicted_Value (X_test,thata,Y_test):
     for i in range(len(X_test)):
         xi=X_test[i]
         yi=Y_test[i]
-        h=classification(thata, xi)
+        h=classification(thata, xi,threshold)
         #print(i,h)
         if yi == 1 and h == 1:
             TP = TP+1
@@ -281,15 +275,42 @@ def F_score(recall,precision):
     return f_score
 
 #--------------------------------
-# true positive rate
+# true positive rate-recall
 def TPR(TP,FN):
     tpr=TP/(TP+FN)
     return tpr
 
 #--------------------------------
-## false positive rate
+## false positive rate- precision
 def FPR(FP,TN):
     fpr=FP/(FP+TN)
     return fpr
 
 # --------------------------------
+# num of threshols as num of  the example
+def roc_curve_graph(X_test, thata, Y_test):
+    num_threshold=10
+
+
+    X=[]
+    Y=[]
+    threshold=0
+    for i in range(num_threshold+1):
+        threshold=threshold+0.5
+        print(threshold)
+        TP= FN= FP= TN=0
+        TP, FN, FP, TN=predicted_Value(X_test, thata, Y_test, threshold)
+        print(TP, FN, FP, TN)
+        X.append(FPR(FP,TN))
+        Y.append( TPR(TP,FN))
+    print(X)
+    print(Y)
+    plt.scatter(X, Y, label='skitscat', color='blue', marker='o', s=50)
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.legend()
+    plt.show()
+
+
+
+

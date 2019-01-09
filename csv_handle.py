@@ -174,22 +174,18 @@ def split_col_data(col_name,df2):
          for i in range(length):
              if col[i] == 'fixed':
                  df2['fixed'].at[i] = 1
-                 df2['NaN'].at[i] = 0
                  df2['normal'].at[i] = 0
                  df2['reversable'].at[i] = 0
              elif isNaN(col[i]):
-                 df2['fixed'].at[i] = 0
-                 df2['NaN'].at[i] = 1
-                 df2['normal'].at[i] = 0
-                 df2['reversable'].at[i] = 0
+                 df2['fixed'].at[i] = np.nan
+                 df2['normal'].at[i] = np.nan
+                 df2['reversable'].at[i] = np.nan
              elif col[i] == 'normal':
                  df2['fixed'].at[i] = 0
-                 df2['NaN'].at[i] = 0
                  df2['normal'].at[i] = 1
                  df2['reversable'].at[i] = 0
              elif col[i] == 'reversable':
                  df2['fixed'].at[i] = 0
-                 df2['NaN'].at[i] = 0
                  df2['normal'].at[i] = 0
                  df2['reversable'].at[i] = 1
      if col_name =='AHD':

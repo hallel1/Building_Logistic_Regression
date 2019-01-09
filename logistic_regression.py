@@ -130,7 +130,7 @@ def lgReg(theta, x_train,y_train,alpha, maxIter, difference):
     return (theta,costVec)
 #----------------------------------------------------
 
-def cost(theta, x_train,y_train):
+def cost(theta, x_train,y_train):#L(theta) func
     sum = 0
 
     count_row = len(y_train)#file.shape[0]# parameter m
@@ -140,7 +140,7 @@ def cost(theta, x_train,y_train):
         print('x_train[i] expecting get vector ',x_train[i])
         sum+=lgReg_iter(theta, X, yi)
 
-    sum = -1 * sum #####check if ok to mult by -1
+    sum = 1 * sum #####check if ok to mult by -1
     sum = (1/count_row) * sum #####check if here!!!
     return (sum)
 

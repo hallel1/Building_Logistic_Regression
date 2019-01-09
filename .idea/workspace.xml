@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a700838a-5414-4b64-b354-8f68659f4770" name="Default Changelist" comment="fix thal nan cells">
-      <change beforePath="$PROJECT_DIR$/csv_handle.py" beforeDir="false" afterPath="$PROJECT_DIR$/csv_handle.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logistic_regression.py" beforeDir="false" afterPath="$PROJECT_DIR$/logistic_regression.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,8 +15,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-432">
-              <caret line="137" column="5" selection-start-line="137" selection-start-column="5" selection-end-line="137" selection-end-column="5" />
+            <state relative-caret-position="1132">
+              <caret line="83" column="11" selection-start-line="83" selection-start-column="11" selection-end-line="83" selection-end-column="11" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -36,8 +36,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/logistic_regression.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2659">
-              <caret line="46" column="56" selection-start-line="46" selection-start-column="56" selection-end-line="46" selection-end-column="56" />
+            <state relative-caret-position="272">
+              <caret line="142" column="10" selection-start-line="142" selection-start-column="10" selection-end-line="142" selection-end-column="10" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -74,6 +74,8 @@
       <find>h-y</find>
       <find>h</find>
       <find>pri</find>
+      <find>-</find>
+      <find>(1 / m)</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -89,9 +91,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/csv_handle.py" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/logistic_regression.py" />
-        <option value="$PROJECT_DIR$/csv_handle.py" />
       </list>
     </option>
   </component>
@@ -205,7 +207,7 @@
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Find" order="4" weight="0.32867134" />
       <window_info anchor="bottom" id="Version Control" order="5" weight="0.32867134" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.10664336" />
+      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.2534965" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.3986014" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
@@ -309,8 +311,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-432">
-          <caret line="137" column="5" selection-start-line="137" selection-start-column="5" selection-end-line="137" selection-end-column="5" />
+        <state relative-caret-position="1132">
+          <caret line="83" column="11" selection-start-line="83" selection-start-column="11" selection-end-line="83" selection-end-column="11" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
@@ -326,8 +328,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/logistic_regression.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2659">
-          <caret line="46" column="56" selection-start-line="46" selection-start-column="56" selection-end-line="46" selection-end-column="56" />
+        <state relative-caret-position="272">
+          <caret line="142" column="10" selection-start-line="142" selection-start-column="10" selection-end-line="142" selection-end-column="10" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>

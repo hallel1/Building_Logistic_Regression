@@ -305,10 +305,6 @@ def roc_curve_graph(X_test, thata, Y_test):
 
     plt.legend()
     plt.show()
-    for i in range(1,len(X)):
-        ans, err = quad( lambda x:x,X[i-1],X[i])
-
-    print(ans)
 
 
 

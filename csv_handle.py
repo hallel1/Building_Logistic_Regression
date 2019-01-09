@@ -203,7 +203,7 @@ def split_col_data(col_name,df2):
 #A method that normalizes all col in the file
 def normalizationAll(file):
     colNum=file.shape[1]
-    for colIndex in range(1,colNum-1):  # run on the num of cols
+    for colIndex in range(2,colNum-1):  # run on the num of cols WITHOUT V_ONE
         colLine = contain_col(colIndex, file)
         normalization(file, colIndex)
 

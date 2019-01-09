@@ -10,7 +10,7 @@ from sklearn.model_selection import train_test_split
 #print('mainnnnnnnnn')
 from csv_handle import contain_row
 
-path = 'data.csv'
+path = 'hearts.csv'
 name = 'ChestPain'
 df_org = pd.read_csv(path)
 # df_org.to_csv('changeData.csv')
@@ -68,18 +68,26 @@ if __name__ == "__main__":
     df2.to_csv('changeData.csv')
     new_path = 'changeData.csv'
     df2.to_csv(new_path, encoding='utf-8', index=False)
-    df2.insert(4, 'typical',  np.nan)
-    df2.insert(5, 'asymptomatic', np.nan)
-    df2.insert(6, 'nonanginal', np.nan)
-    df2.insert(7, 'nontypical', np.nan)
+    df2.insert(1, 'v', 1)
+    df2.insert(5, 'typical',  np.nan)
+    df2.insert(6, 'asymptomatic', np.nan)
+    df2.insert(7, 'nonanginal', np.nan)
+    df2.insert(8, 'nontypical', np.nan)
     #--------------------------------------------
-    df2.insert(18, 'fixed', np.nan)
+    df2.insert(19, 'fixed', np.nan)
     # df2.insert(19, 'NaN', np.nan)
-    df2.insert(19, 'normal', np.nan)
-    df2.insert(20, 'reversable', np.nan)
+    df2.insert(20, 'normal', np.nan)
+    df2.insert(21, 'reversable', np.nan)
     # --------------------------------------------
     # df2.insert(23, 'Yes', np.nan)
     # df2.insert(24, 'No', np.nan)
+    csv_org.split_col_data('ChestPain', df2)
+    csv_org.split_col_data('Thal', df2)
+    csv_org.split_col_data('AHD', df2)
+    # afther spliting the cols del the orginal
+    df2.__delitem__('ChestPain')
+    df2.__delitem__('Thal')
+    print(df2.shape)
 
 
 
@@ -89,12 +97,8 @@ if __name__ == "__main__":
     col = csv_org.contain_col(3,df_org)
 
 
-    csv_org.split_col_data('ChestPain', df2)
-    csv_org.split_col_data('Thal',  df2)
-    csv_org.split_col_data('AHD', df2)
-    # afther spliting the cols del the orginal
-    df2.__delitem__('ChestPain')
-    df2.__delitem__('Thal')
+
+    
 
     df2.to_csv(new_path, encoding='utf-8', index=False)
    # print(df2)
@@ -163,9 +167,7 @@ if __name__ == "__main__":
     #########################################333
     #display errors
 
-    '''
-    TP, FN, FP, TN=logreg.predicted_Value(X_test, betterTheta, y_test)
-    # print(TP, FN, FP, TN)
+
 
     threshold=0.5
     TP, FN, FP, TN=logreg.predicted_Value(X_test, betterTheta, y_test,threshold)
@@ -190,7 +192,7 @@ if __name__ == "__main__":
     fpr=logreg.FPR(FP, TN)
     print("false positive rate(FPR)=",fpr)
 
-'''
+
 
     # print graph roc_curve
     # print (all_test)
@@ -208,4 +210,4 @@ if __name__ == "__main__":
 
 
 
-    print(" finsh check csv_org methods  ")
+

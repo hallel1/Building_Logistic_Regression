@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a700838a-5414-4b64-b354-8f68659f4770" name="Default Changelist" comment="fix thal nan cells">
-      <change beforePath="$PROJECT_DIR$/logistic_regression.py" beforeDir="false" afterPath="$PROJECT_DIR$/logistic_regression.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/‏‏‏‏קובץ מצורף 2 - הנחיות מרצה להגשת עבודות 9062 (1) - עותק - עותק.CSV" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,11 +13,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="114">
-              <caret line="137" column="125" selection-start-line="137" selection-start-column="125" selection-end-line="137" selection-end-column="125" />
+            <state relative-caret-position="-1170">
+              <caret line="21" column="89" lean-forward="true" selection-start-line="21" selection-start-column="89" selection-end-line="21" selection-end-column="89" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -27,7 +28,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/site-packages/matplotlib/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="116">
+            <state relative-caret-position="4298">
               <caret line="1809" selection-start-line="1809" selection-end-line="1809" />
             </state>
           </provider>
@@ -36,17 +37,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/csv_handle.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1975">
-              <caret line="48" column="14" selection-start-line="48" selection-start-column="14" selection-end-line="48" selection-end-column="14" />
+            <state relative-caret-position="3111">
+              <caret line="186" column="41" lean-forward="true" selection-start-line="186" selection-start-column="41" selection-end-line="186" selection-end-column="41" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/logistic_regression.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="208" column="26" selection-start-line="208" selection-start-column="26" selection-end-line="208" selection-end-column="26" />
+            <state relative-caret-position="171">
+              <caret line="223" column="24" selection-start-line="223" selection-start-column="10" selection-end-line="223" selection-end-column="24" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -113,8 +114,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/csv_handle.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/logistic_regression.py" />
+        <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
@@ -228,7 +229,7 @@
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Find" order="4" weight="0.32867134" />
       <window_info anchor="bottom" id="Version Control" order="5" weight="0.32867134" />
-      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.23776224" />
+      <window_info active="true" anchor="bottom" id="Run" order="6" visible="true" weight="0.4020979" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.3986014" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
@@ -348,36 +349,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/logistic_regression.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="223" column="24" selection-start-line="223" selection-start-column="10" selection-end-line="223" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/site-packages/matplotlib/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
+        <state relative-caret-position="4298">
           <caret line="1809" selection-start-line="1809" selection-end-line="1809" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/csv_handle.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1975">
-          <caret line="48" column="14" selection-start-line="48" selection-start-column="14" selection-end-line="48" selection-end-column="14" />
+        <state relative-caret-position="3111">
+          <caret line="186" column="41" lean-forward="true" selection-start-line="186" selection-start-column="41" selection-end-line="186" selection-end-column="41" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="137" column="125" selection-start-line="137" selection-start-column="125" selection-end-line="137" selection-end-column="125" />
+        <state relative-caret-position="-1170">
+          <caret line="21" column="89" lean-forward="true" selection-start-line="21" selection-start-column="89" selection-end-line="21" selection-end-column="89" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/logistic_regression.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="208" column="26" selection-start-line="208" selection-start-column="26" selection-end-line="208" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>

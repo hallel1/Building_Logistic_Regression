@@ -140,7 +140,7 @@ if __name__ == "__main__":
     v_theta =np.zeros(df.shape[1])#logreg.random_theta(df2)
     #betterTheta = logreg.gradientDescent(v_theta, 0.9999999999999, df2, 1, 5, 0.0000000000000003)
 
-    betterTheta, L_thetaVec,countIter= logreg.lgReg(v_theta, X_train,y_train,alpha=0.001, maxIter=500, difference=0.000000001)
+    betterTheta, L_thetaVec,countIter= logreg.lgReg(v_theta, X_train,y_train,alpha=0.0001, maxIter=700, difference=0.000000001)
     print('l len ',L_thetaVec)
     print('l len ',len(L_thetaVec))
     print('countIter ', countIter)
@@ -170,7 +170,7 @@ if __name__ == "__main__":
 
 
 
-    threshold=0.5
+    threshold=0.9
     TP, FN, FP, TN=logreg.predicted_Value(X_test, betterTheta, y_test,threshold)
     print(TP, FN, FP, TN)
 

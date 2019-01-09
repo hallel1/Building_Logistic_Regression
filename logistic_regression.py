@@ -251,13 +251,19 @@ def recall(TP,FN):
 
 #----------------------------------
 def precision(TP,FP):
+    if TP+FP ==0:# Prevents zero division
+        return np.nan
     pre=TP/(TP+FP)
     return pre
 
 #----------------------------------
 def F_score(recall,precision):
+    if recall == 0 or precision==0:# Prevents zero division
+        return np.nan
     rec =1/recall
     pre=1/precision
+    if rec+pre == 0:# Prevents zero division
+        return np.nan
     f_score=2/(rec+pre)
     return f_score
 

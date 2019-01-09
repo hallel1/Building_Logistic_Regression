@@ -207,7 +207,6 @@ def graph_L_theta(costVec,vecIter):
     plt.plot(vecIter,costVec)
     plt.xlabel('iteration')
     plt.ylabel('L(theta)')
-    plt.legend()
     plt.show()
 #-----------------------------------------
 # X_test- matrix of values

@@ -8,8 +8,16 @@ from csv_handle import contain_row
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 
-
 #--------------------Methods-----------------------------
+
+def random_theta(df):
+    vector_theta = []
+    for i in range(df.shape[1]):#range about num of col
+        vector_theta.append(np.random.random())
+    return vector_theta
+
+
+#-------------------------------
 
 #calc sigmond func  for calcing the  h  later
 def sigmoid (z):
@@ -31,14 +39,56 @@ def h_func( theta,X):
 
 
 #---------------------------
-def random_theta(df):
-    vector_theta = []
-    for i in range(df.shape[1]):#range about num of col
-        vector_theta.append(np.random.random())
-    return vector_theta
 
+
+'''def gradientDescent(theta,alpha,maxIter,difference,xi_vec,yi,numTrain):
+
+    for j in range(maxIter):
+     #   diffOrg= theta[0]
+        theta=gradientDescentIter(theta, alpha,xi_vec,yi,numTrain)
+    #    print('new theta',theta)
+    #    if abs(diffOrg-theta[0]) <difference:#####checkkk
+    #        print('yes diff')
+        break
+    return theta'''
+#------------------------------------------
+# fun y^ - for Classification
+def  classification( theta,X,threshold):
+
+    h= h_func( theta,X)
+    if h>=threshold:
+        return 1
+    else:
+        return 0
+
+#---------------------------
+
+
+
+def lgReg_iter(theta, X,y):# X is vector of row
+    h_of_xi=  h_func(theta,X)
+    calc= y * np.math.log(h_of_xi)+ (1-y)* np.math.log(1- h_of_xi)#######check!!
+    return calc
+
+#---------------------------
+
+
+def cost(theta, x_train,y_train):#L(theta) func
+    sum = 0
+
+    count_row = len(y_train)#file.shape[0]# parameter m
+    for i in range(0, count_row ):
+        yi= y_train[i]
+        X = x_train[i]#expecting get vector
+        #print('x_train[i] expecting get vector ',x_train[i])
+        sum+=lgReg_iter(theta, X, yi)
+
+    #####check if ok to mult by -1
+    sum = (1/count_row) * sum #####check if here!!!
+    return (sum)
 
 #-------------------------------
+
 def gradient(theta,xi_vec,yi,numTrain):
     gradientVal=0
     h=h_func(theta, xi_vec)
@@ -54,41 +104,6 @@ def gradientDescentIter(theta,alpha,xi_vec,yi,numTrain):
     theta=theta+alpha*gradientVal
     return theta
 #------------------------------------------
-'''def gradientDescent(theta,alpha,maxIter,difference,xi_vec,yi,numTrain):
-
-    for j in range(maxIter):
-     #   diffOrg= theta[0]
-        theta=gradientDescentIter(theta, alpha,xi_vec,yi,numTrain)
-    #    print('new theta',theta)
-    #    if abs(diffOrg-theta[0]) <difference:#####checkkk
-    #        print('yes diff')
-            break
-    return theta'''
-#------------------------------------------
-# fun y^ - for Classification
-def  classification( theta,X,threshold):
-
-    h= h_func( theta,X)
-    if h>=threshold:
-        return 1
-    else:
-        return 0
-
-#---------------------------
-# def probability_func(theta,X_matrix,y):
-#     h =h_func( theta,X)
-#     prob=(h**y)*(1-h)**(1-y)
-#     return prob
-
-#---------------------------
-
-
-def lgReg_iter(theta, X,y):# X is vector of row
-    h_of_xi=  h_func(theta,X)
-    calc= y * np.math.log(h_of_xi)+ (1-y)* np.math.log(1- h_of_xi)#######check!!
-    return calc
-
-#---------------------------
 
 def lgReg(theta, x_train,y_train,alpha, maxIter, difference):
     costVec=[]
@@ -110,32 +125,9 @@ def lgReg(theta, x_train,y_train,alpha, maxIter, difference):
     return (theta,costVec)
 #----------------------------------------------------
 
-def cost(theta, x_train,y_train):#L(theta) func
-    sum = 0
-
-    count_row = len(y_train)#file.shape[0]# parameter m
-    for i in range(0, count_row ):
-        yi= y_train[i]
-        X = x_train[i]#expecting get vector
-        print('x_train[i] expecting get vector ',x_train[i])
-        sum+=lgReg_iter(theta, X, yi)
-
-    #####check if ok to mult by -1
-    sum = (1/count_row) * sum #####check if here!!!
-    return (sum)
 
 
-
-#---------------------------
-def random_theta(df):
-    vector_theta = []
-    for i in range(df.shape[1]):#range about num of col
-        vector_theta.append(np.random.random())
-    return vector_theta
-
-
-#-------------------------------
-def gradient(theta, file,indexRow):
+'''def gradient(theta, file,indexRow):
     gradientVal=0
    # count_col = file.shape[1]
     X = contain_row(indexRow, file)
@@ -155,8 +147,9 @@ def gradientDescentIter(theta,alpha, file,indexRow):
     gradientVal=gradient(theta, file, indexRow)
     theta=theta+alpha*gradientVal
     return theta
+'''
 #------------------------------------------
-def gradientDescent(theta,alpha, file,indexRow,maxIter,difference):
+'''def gradientDescent(theta,alpha, file,indexRow,maxIter,difference):
 
     for j in range(maxIter):
         diffOrg= theta[0]
@@ -167,8 +160,7 @@ def gradientDescent(theta,alpha, file,indexRow,maxIter,difference):
             break
     return theta
 
-
-#
+'''
 
 '''
 def plot(X,y,df):
@@ -196,6 +188,13 @@ def plot(X,y,df):
     plt.legend()
     plt.show()
     '''
+
+# def probability_func(theta,X_matrix,y):
+#     h =h_func( theta,X)
+#     prob=(h**y)*(1-h)**(1-y)
+#     return prob
+
+#---------------------------
 
 
 def graph_L_theta(costVec,vecIter):

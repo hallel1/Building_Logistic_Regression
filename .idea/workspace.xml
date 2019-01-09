@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a700838a-5414-4b64-b354-8f68659f4770" name="Default Changelist" comment="fix thal nan cells">
-      <change beforePath="$PROJECT_DIR$/csv_handle.py" beforeDir="false" afterPath="$PROJECT_DIR$/csv_handle.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logistic_regression.py" beforeDir="false" afterPath="$PROJECT_DIR$/logistic_regression.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,11 +13,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="130" column="13" selection-start-line="130" selection-start-column="13" selection-end-line="130" selection-end-column="13" />
+            <state relative-caret-position="239">
+              <caret line="136" column="41" selection-start-line="136" selection-start-column="36" selection-end-line="136" selection-end-column="41" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -29,8 +28,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/csv_handle.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="230" column="13" selection-start-line="230" selection-start-column="13" selection-end-line="230" selection-end-column="13" />
+            <state relative-caret-position="116">
+              <caret line="48" column="14" selection-start-line="48" selection-start-column="14" selection-end-line="48" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -44,13 +43,15 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/logistic_regression.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="83" selection-start-line="83" selection-end-line="83" />
+            <state relative-caret-position="-34">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
+                <element signature="e#841#1197#1" />
+                <element signature="e#4642#5433#1" />
               </folding>
             </state>
           </provider>
@@ -76,20 +77,20 @@
       <find>0.39463217528275296,</find>
       <find>0.39463217528275296, 0.6862024383574895, -0.28660575211055495, -0.9516619028617735</find>
       <find>print</find>
-      <find>gradientDescent</find>
-      <find>lgReg</find>
       <find>yi-h</find>
       <find>h-y</find>
       <find>h</find>
       <find>-</find>
       <find>(1 / m)</find>
-      <find>lgReg_iter</find>
       <find>printg</find>
       <find>pri</find>
       <find>print_</find>
       <find>cost</find>
+      <find>lgReg_iter</find>
+      <find>gradientDescent</find>
       <find>averageCol</find>
       <find>gradientDescentIter</find>
+      <find>lgReg</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -106,8 +107,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/csv_handle.py" />
-        <option value="$PROJECT_DIR$/logistic_regression.py" />
         <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/logistic_regression.py" />
       </list>
     </option>
   </component>
@@ -327,6 +328,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="136" column="41" selection-start-line="136" selection-start-column="36" selection-end-line="136" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/changeData.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-834">
@@ -336,27 +347,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/csv_handle.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="230" column="13" selection-start-line="230" selection-start-column="13" selection-end-line="230" selection-end-column="13" />
+        <state relative-caret-position="116">
+          <caret line="48" column="14" selection-start-line="48" selection-start-column="14" selection-end-line="48" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/logistic_regression.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="83" selection-start-line="83" selection-end-line="83" />
+        <state relative-caret-position="-34">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="130" column="13" selection-start-line="130" selection-start-column="13" selection-end-line="130" selection-end-column="13" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#841#1197#1" />
+            <element signature="e#4642#5433#1" />
           </folding>
         </state>
       </provider>

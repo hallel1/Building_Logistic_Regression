@@ -81,28 +81,7 @@ def  classification( theta,X,threshold):
 #     return prob
 
 #---------------------------
-def x_matrix(file):
 
-    X_mat=[]
-    for i in range(file.shape[0]):  # run on the num of rows
-        X_mat.append(xi_vector(file,i))
-    return X_mat
-def y_vector(file):
-    yVec=[]
-    for i in range(file.shape[0]):  # run on the num of cols
-        yVec.append(yi_val(file,i))
-    return yVec
-
-def xi_vector(file,i):
-    X = contain_row(i, file)
-    X = X[:-1]  # all row except the last cell
-    return X
-
-def yi_val(file,i):
-    yi = contain_row(i, file)
-    yi = yi[-1]
-    return yi
-#---------------------------
 
 def lgReg_iter(theta, X,y):# X is vector of row
     h_of_xi=  h_func(theta,X)
@@ -119,7 +98,7 @@ def lgReg(theta, x_train,y_train,alpha, maxIter, difference):
 
     for i in range(maxIter):
 
-        theta=gradientDescentIter(theta, alpha,x_train[index],y_train[index],len(y_train))
+        theta=gradientDescentIter(theta, alpha,x_train[index],y_train[index])
         newCost = cost(theta, x_train, y_train)
         costVec.append(newCost)
         if abs(costVec[i]-newCost) <difference:#####checkkk

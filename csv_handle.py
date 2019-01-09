@@ -206,3 +206,26 @@ def normalizationAll(file):
     for colIndex in range(1,colNum-1):  # run on the num of cols
         colLine = contain_col(colIndex, file)
         normalization(file, colIndex)
+
+#---------------------------------
+def x_matrix(file):
+
+    X_mat=[]
+    for i in range(file.shape[0]):  # run on the num of rows
+        X_mat.append(xi_vector(file,i))
+    return X_mat
+def y_vector(file):
+    yVec=[]
+    for i in range(file.shape[0]):  # run on the num of cols
+        yVec.append(yi_val(file,i))
+    return yVec
+
+def xi_vector(file,i):
+    X = contain_row(i, file)
+    X = X[:-1]  # all row except the last cell
+    return X
+
+def yi_val(file,i):
+    yi = contain_row(i, file)
+    yi = yi[-1]
+    return yi

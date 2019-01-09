@@ -81,7 +81,7 @@ if __name__ == "__main__":
     # df2.insert(23, 'Yes', np.nan)
     # df2.insert(24, 'No', np.nan)
 
-    logreg.print_graph()
+
 
     df2.to_csv(new_path, encoding='utf-8', index=False)
 
@@ -115,14 +115,15 @@ if __name__ == "__main__":
 #     v_theta = logreg.random_theta(df2)
 #     print('theta',v_theta)
 #    betterTheta = logreg.gradientDescent(v_theta,0.9999999999999, df2,1,5,0.0000000000000003)
+
     #logreg.gradientDescentIter(v_theta,0.5, df2,1)
 #    print('better', betterTheta)
 
-    v_theta=logreg.random_theta(df2)
+
     # sum=logreg.lgReg(v_theta,df2)
     # print('sum',sum)
     # print('theta',v_theta)
-    betterTheta = logreg.gradientDescent(v_theta,0.9999999999999, df2,1,5,0.0000000000000003)
+  #  betterTheta = logreg.gradientDescent(v_theta,0.9999999999999, df2,1,5,0.0000000000000003)
     #logreg.gradientDescentIter(v_theta,0.5, df2,1)
     # print('better', betterTheta)
 
@@ -131,6 +132,13 @@ if __name__ == "__main__":
     # print('XMatrix.shape ' ,len(XMatrix),len(XMatrix[0]))
     # print('y.shape ', len(y))
     X_train, X_test, y_train, y_test = train_test_split(XMatrix, y, test_size = 0.25, random_state = 42)
+
+    v_theta = logreg.random_theta(df2)
+    betterTheta, L_thetaVec= logreg.lgReg(v_theta, X_train,y_train,alpha=0.5, maxIter=30, difference=0.01)
+    logreg.graph_L_theta(L_thetaVec, range(1,100))
+
+
+
 
     #print('xt ',X_train)
     #print('xt[0] ', X_train[0])
@@ -150,6 +158,7 @@ if __name__ == "__main__":
 
     #########################################333
     #display errors
+    '''
     TP, FN, FP, TN=logreg.predicted_Value(X_test, betterTheta, y_test)
     # print(TP, FN, FP, TN)
     right=TP+TN
@@ -170,7 +179,7 @@ if __name__ == "__main__":
     # false positive rate
     fpr=logreg.FPR(FP, TN)
     print("false positive rate(FPR)=",fpr)
-
+'''
 
 
 

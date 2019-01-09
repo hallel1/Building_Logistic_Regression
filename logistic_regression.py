@@ -225,8 +225,13 @@ def print_graph():
     plt.legend()
     plt.show()
 
+def graph_L_theta(costVec,vecIter):
 
-
+    plt.scatter(costVec,vecIter,label='skitscat',color='blue',marker='o',s=50)
+    plt.xlabel('iteration')
+    plt.ylabel('L(theta)')
+    plt.legend()
+    plt.show()
 #-----------------------------------------
 # X_test- matrix of values
 # h- predicded value

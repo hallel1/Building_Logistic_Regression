@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 
 #--------------------Methods-----------------------------
-
+# method that returnvector of  random_theta as the  col of num
 def random_theta(df):
     vector_theta = []
     for i in range(df.shape[1]):#range about num of col
@@ -26,38 +26,21 @@ def sigmoid (z):
     return g
 
 #----------------------------
-
+# method that  calc value(Qx) for the sigmond func
 def h_func( theta,X):
 
 
     z=[a*b for a, b in zip(theta, X)]
     z = sum(z)
-    #z=np.dot(X, theta)
-    #print('z')
-    #print(z)
     g=sigmoid(z)
     return g
 
 
-#---------------------------
-
-
-'''def gradientDescent(theta,alpha,maxIter,difference,xi_vec,yi,numTrain):
-
-    for j in range(maxIter):
-     #   diffOrg= theta[0]
-        theta=gradientDescentIter(theta, alpha,xi_vec,yi,numTrain)
-    #    print('new theta',theta)
-    #    if abs(diffOrg-theta[0]) <difference:#####checkkk
-    #        print('yes diff')
-        break
-    return theta'''
 #------------------------------------------
-# fun y^ - for Classification
+# A method which predicts according to the calculation of whether the patient is sick or healthy
 def  classification( theta,X,threshold):
 
     h= h_func( theta,X)
-    print('h', h)
     if h>=threshold:
         return 1
     else:
@@ -65,8 +48,7 @@ def  classification( theta,X,threshold):
 
 #---------------------------
 
-
-
+# method that calc the cost for one  example
 def lgReg_iter(theta, X,y):# X is vector of row
     h_of_xi=  h_func(theta,X)
     calc= y * np.math.log(h_of_xi)+ (1-y)* np.math.log(1- h_of_xi)#######check!!
@@ -74,7 +56,7 @@ def lgReg_iter(theta, X,y):# X is vector of row
 
 #---------------------------
 
-
+# method that calc that cost , the sum for  all example
 def cost(theta, x_train,y_train):#L(theta) func
     sum = 0
 
@@ -82,22 +64,18 @@ def cost(theta, x_train,y_train):#L(theta) func
     for i in range(0, count_row ):
         yi= y_train[i]
         X = x_train[i]#expecting get vector
-        #print('x_train[i] expecting get vector ',x_train[i])
         sum+=lgReg_iter(theta, X, yi)
 
-    #####check if ok to mult by -1
-    sum = (1/count_row) * sum #####check if here!!!
+    sum = (1/count_row) * sum
     return (sum)
 
 #-------------------------------
-
+#  method that calc the gradient - for improving theta
 def gradient(theta,xi_vec,yi,numTrain):
     gradientVal=0
     h=h_func(theta, xi_vec)
-    #gradientVal=(1 / m) * np.dot(X.transpose(), h - yi)####maybe need x.t (transpose)
-    #print('col',len(xi_vec))
     for j in range(len(xi_vec)):
-        gradientVal+=(yi-h)*xi_vec[j]###check y-h or h-y
+        gradientVal+=(yi-h)*xi_vec[j]
     gradientVal=(1 / numTrain) *gradientVal
     return gradientVal
 #------------------------------------------
@@ -108,7 +86,7 @@ def gradientDescentIter(theta,alpha,x_train,y_train):
         theta=theta+alpha*gradientVal
     return theta
 #------------------------------------------
-
+# the main method that calc the most optimal theta  for getting optimal cost
 def lgReg(theta, x_train,y_train,alpha, maxIter, difference):
     costVec=[]
     costVal = cost(theta, x_train, y_train)
@@ -124,83 +102,9 @@ def lgReg(theta, x_train,y_train,alpha, maxIter, difference):
             print('yes diff', len(costVec))
             break
 
-    # betterTheta=gradientDescent(theta,alpha,maxIter,difference,x_train[index],y_train[index],len(y_train))
-
     return (theta,costVec,countIter)
 #----------------------------------------------------
-
-
-
-'''def gradient(theta, file,indexRow):
-    gradientVal=0
-   # count_col = file.shape[1]
-    X = contain_row(indexRow, file)
-    X = X[:-1]  # all row except the last cell
-    yi = contain_row(indexRow, file)
-    yi = yi[-1]
-    m = file.shape[0]  # num of row
-    h=h_func(theta, X)
-    #gradientVal=(1 / m) * np.dot(X.transpose(), h - yi)####maybe need x.t (transpose)
-    # print('col',len(X))
-    for j in range(len(X)):
-        gradientVal+=(yi-h)*X[j]
-    gradientVal=(1 / m) *gradientVal
-    return gradientVal
-#------------------------------------------
-def gradientDescentIter(theta,alpha, file,indexRow):
-    gradientVal=gradient(theta, file, indexRow)
-    theta=theta+alpha*gradientVal
-    return theta
-'''
-#------------------------------------------
-'''def gradientDescent(theta,alpha, file,indexRow,maxIter,difference):
-
-    for j in range(maxIter):
-        diffOrg= theta[0]
-        theta=gradientDescentIter(theta, alpha, file, indexRow)
-        # print('new theta',theta)
-        if abs(diffOrg-theta[0]) <difference:#####checkkk
-            print('yes diff')
-            break
-    return theta
-
-'''
-
-'''
-def plot(X,y,df):
-    #count_row = df.shape[0]  # parameter m
-    #for i in range(0, count_row)    :
-    listHealpy=[]
-    for i in range(df.shape[0]):  # range about num of row
-        row =contain_row(i, df)
-        healthy = row[y == 1]
-        #healthyX=healthy[:-1]# all row except the last cell
-        print('healpy')
-        print(healthy)
-
-    # filter out the applicants that din't get admission
-    not_admitted = df.loc[y == 0]
-
-    # plots
-    plt.scatter(admitted.iloc[:, 0], admitted.iloc[:, 1], s=10, label='Admitted')
-    plt.scatter(not_admitted.iloc[:, 0], not_admitted.iloc[:, 1], s=10, label='Not Admitted')
-
-
-    plt.plot(X,y, label='Decision Boundary')
-    plt.xlabel('Marks in 1st Exam')
-    plt.ylabel('Marks in 2nd Exam')
-    plt.legend()
-    plt.show()
-    '''
-
-# def probability_func(theta,X_matrix,y):
-#     h =h_func( theta,X)
-#     prob=(h**y)*(1-h)**(1-y)
-#     return prob
-
-#---------------------------
-
-
+# method that  display L_theta graph
 def graph_L_theta(costVec,vecIter):
 
     #plt.scatter(vecIter,costVec,label='skitscat',color='blue',marker='o',s=50)
@@ -210,9 +114,10 @@ def graph_L_theta(costVec,vecIter):
     plt.show()
 #-----------------------------------------
 # X_test- matrix of values
-# h- predicded value
+# h- predicated value
 # y- real value (Vector of values)
-#
+# method that checks hwo many   true positive, true negative, false positive and false negative cases we have
+#  when we given  a threshold the common threshold is 0.5
 def predicted_Value (X_test,thata,Y_test,threshold):
     TP = 0  # was predicted that the patient is sick and was right ( y=1, h=1 )
     FN = 0  # the model predicted that the patient is healthy  and was wrong( y=1, h=0 )
@@ -222,7 +127,6 @@ def predicted_Value (X_test,thata,Y_test,threshold):
         xi=X_test[i]
         yi=Y_test[i]
         h=classification(thata, xi,threshold)
-        #print(i,h)
         if yi == 1 and h == 1:
             TP = TP+1
         elif yi == 1 and h == 0:
@@ -282,18 +186,16 @@ def roc_curve_graph(X_test, thata, Y_test):
     Y=[]
     threshold=0
     for i in range(num_threshold+1):
-        threshold=threshold+0.1
-        print(threshold)
-
+        threshold=threshold+0.2
         TP, FN, FP, TN=predicted_Value(X_test, thata, Y_test, threshold)
         print(TP, FN, FP, TN)
         X.append(FPR(FP,TN))
         Y.append( TPR(TP,FN))
-    print(X)
-    print(Y)
     # plt.scatter(X, Y, label='skitscat', color='blue', marker='o', s=50)
 
     plt.plot(X,Y)
+    print(X)
+    print(Y)
     plt.xlabel('x')
     plt.ylabel('y')
 

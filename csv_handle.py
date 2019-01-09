@@ -20,6 +20,33 @@ normal=[0,0,1,0]
 reversable=[0,0,0,1]
 
 #--------------------Methods-----------------------------
+#A method that inserts columns into a table (for splitting the columns containing string categories)
+# calls for a method that splits the relevant columns and deletes the original columns that was divided
+def insert_col_df(df2):
+
+    df2.insert(1, 'v', 1)
+    df2.insert(5, 'typical', np.nan)
+    df2.insert(6, 'asymptomatic', np.nan)
+    df2.insert(7, 'nonanginal', np.nan)
+    df2.insert(8, 'nontypical', np.nan)
+    # --------------------------------------------
+    df2.insert(19, 'fixed', np.nan)
+    # df2.insert(19, 'NaN', np.nan)
+    df2.insert(20, 'normal', np.nan)
+    df2.insert(21, 'reversable', np.nan)
+    # --------------------------------------------
+    # df2.insert(23, 'Yes', np.nan)
+    # df2.insert(24, 'No', np.nan)
+    split_col_data('ChestPain', df2)
+    split_col_data('Thal', df2)
+    split_col_data('AHD', df2)
+    # afther spliting the cols del the orginal
+    df2.__delitem__('ChestPain')
+    df2.__delitem__('Thal')
+    # print(df2.shape)
+    # print(df2)
+
+#-------------------------------------------------------------------
 #Returns row content from the file (information about one patient)
 def contain_row(row_num,df):
     rowList = []
@@ -45,7 +72,7 @@ def isNaN(val):
 #-------------------------------
 
 
-
+# method that does average on column values, does not consider empty cells
 def averageCol(col):
     #didnt count nun lines, flagNaN is 1 if there are nan
 
@@ -64,6 +91,8 @@ def averageCol(col):
     average = sum / line_count
     return (average,line_count,flagNaN)
 #-------------------------------
+
+#A method that receives a column number and returns the name of that column
 def recognizeColByNum(file,col_num):
 
     header=list(file.columns.values)
@@ -71,44 +100,22 @@ def recognizeColByNum(file,col_num):
 
     return colName
 #-------------------------------
-
+#method that replaces an average nan value of the same column
 def replaceNaN(file,col_num,avg):
     col = contain_col(col_num, file)  # create list from row
     rowNum=0
-#    print('before')
-#    print(col)
     colName= recognizeColByNum(file,col_num)
 
     for i in col:
         if isNaN(i):
             col = contain_col(col_num, file)
-#            print(col)
- #           file.replace(np.nan, '$', regex=True)
-#            print('alo')
-
-
             file[colName].at[rowNum] = avg
-#            print(file[colName].at[rowNum])
-            col = contain_col(col_num, file)
-#            print(col)
 
-            #file['Ca'].at[0] = "#"
-           # file['Ca'].at[i] = '^^'
-           # file.replace({'Ca': 0}, '#')
-           #  file.replace('', '**', inplace=True)
-           #  file.to_csv(path)
-           #  file = pd.read_csv(path)
-            #file.replace(0, '&')
-            #file.set_value(i, col_num, avg)
         rowNum+=1
-   # file.to_csv(path)
-    #  file = pd.read_csv(path)
 
-#    print('after')
-#    print(col)
 #-------------------------------
 
-#A method that normalizes col in the file
+#A method that normalizes specific col in the file
 def normalization(file, col_num):
     col = contain_col(col_num, file)  # create list from row
     average,line_count,flagNaN=averageCol(col)
@@ -125,7 +132,7 @@ def normalization(file, col_num):
         standard_deviation+= tmp**2#pow
     standard_deviation/=line_count;
     standard_deviation = standard_deviation**(0.5)
-#    print('standard_deviation '+str(standard_deviation))
+
 
     for i in col:
         tmp= i - average
@@ -134,12 +141,10 @@ def normalization(file, col_num):
         index+=1
     colName = recognizeColByNum(file, col_num)
     file[colName]=normalization_col#Updating the column to be normalized
-   # print(col)
-
 
 
 # -------------------------------
-#A method that splits the column with string categories to the number of categories
+#A method that splits the column with string categories  the colums as number of categories
 # it has, each new column receives the value of the category,
 # the cells in the column are marked with one where the category is the same in the original column and the rest  is zero
 def split_col_data(col_name,df2):
@@ -147,7 +152,6 @@ def split_col_data(col_name,df2):
      col_num =df2.columns.get_loc(col_name)
      if col_name=='ChestPain':
          col=contain_col(col_num, df2)
-         # print(col)
          for i in range(length):
              if  col[i]=='typical':
                  df2['typical'].at[i]=1
@@ -200,7 +204,7 @@ def split_col_data(col_name,df2):
 # -------------------------------
 
 
-#A method that normalizes all col in the file
+#A method that normalizes all cols in the file
 def normalizationAll(file):
     colNum=file.shape[1]
     for colIndex in range(2,colNum-1):  # run on the num of cols WITHOUT V_ONE
@@ -208,23 +212,28 @@ def normalizationAll(file):
         normalization(file, colIndex)
 
 #---------------------------------
+# method that return only x matrix from the ds (data frame) file
 def x_matrix(file):
 
     X_mat=[]
     for i in range(file.shape[0]):  # run on the num of rows
         X_mat.append(xi_vector(file,i))
     return X_mat
+#---------------------------------
+#method that return the y vector - real answer
 def y_vector(file):
     yVec=[]
     for i in range(file.shape[0]):  # run on the num of cols
         yVec.append(yi_val(file,i))
     return yVec
-
+#---------------------------------
+# method that return one row in the x-matrix (without the y v)
 def xi_vector(file,i):
     X = contain_row(i, file)
     X = X[:-1]  # all row except the last cell
     return X
-
+#---------------------------------
+#method that return specific yi - spesific answer
 def yi_val(file,i):
     yi = contain_row(i, file)
     yi = yi[-1]

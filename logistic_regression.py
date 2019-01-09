@@ -178,7 +178,7 @@ def TPR(TP,FN):
     return tpr
 
 #--------------------------------
-## false positive rate- precision
+## false positive rate
 def FPR(FP,TN):
     fpr=FP/(FP+TN)
     return fpr
@@ -190,10 +190,12 @@ def roc_curve_graph(X_test, thata, Y_test):
 
     X=[]
     Y=[]
-    threshold=0
+    threshold=0.6
     for i in range(num_threshold+1):
-        threshold=threshold+0.2
+        threshold=threshold+0.04
+        print("TP, FN, FP, TN")
         TP, FN, FP, TN=predicted_Value(X_test, thata, Y_test, threshold)
+
         print(TP, FN, FP, TN)
         X.append(FPR(FP,TN))
         Y.append( TPR(TP,FN))
@@ -212,6 +214,15 @@ def roc_curve_graph(X_test, thata, Y_test):
 
     plt.legend()
     plt.show()
+    area=np.trapz(Y,X)
+    print(area)
+    area=0
+    for i in range(1,num_threshold+1):
+        a=X[i-1]-X[i]
+        b=a*Y[i-1]
+        area=area+b
+    print(area)
+
 
 
 

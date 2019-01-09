@@ -127,8 +127,8 @@ if __name__ == "__main__":
     #logreg.gradientDescentIter(v_theta,0.5, df2,1)
     # print('better', betterTheta)
 
-    XMatrix=logreg.x_matrix(df2)
-    y=logreg.y_vector(df2)
+    XMatrix=csv_org.x_matrix(df2)
+    y=csv_org.y_vector(df2)
     # print('XMatrix.shape ' ,len(XMatrix),len(XMatrix[0]))
     # print('y.shape ', len(y))
     X_train, X_test, y_train, y_test = train_test_split(XMatrix, y, test_size = 0.25, random_state = 42)

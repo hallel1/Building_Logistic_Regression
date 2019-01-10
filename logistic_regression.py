@@ -186,7 +186,7 @@ def FPR(FP,TN):
 # --------------------------------
 # num of threshols as num of  the example
 def roc_curve_graph(X_test, thata, Y_test):
-    num_threshold=20
+    num_threshold=0
 
     X=[]
     Y=[]
@@ -222,7 +222,7 @@ def roc_curve_graph(X_test, thata, Y_test):
         a=X[i-1]-X[i]
         b=a*Y[i-1]
         area=area+b
-    print('area',area)
+    print(area)
 
 
 

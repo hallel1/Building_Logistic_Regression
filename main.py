@@ -30,7 +30,7 @@ if __name__ == "__main__":
 
     ##################################################################
 
-
+    print("Error estimations with tarshold = 0.5")
     threshold=0.5
     TP, FN, FP, TN=logreg.predicted_Value(X_test, betterTheta, y_test,threshold)
     right=TP+TN

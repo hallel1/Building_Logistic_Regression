@@ -24,7 +24,7 @@ if __name__ == "__main__":
     y = csv_org.y_vector(df2)
     X_train, X_test, y_train, y_test = train_test_split(XMatrix, y, test_size=0.25, random_state=42)
     v_theta = np.zeros(df.shape[1])  # logreg.random_theta(df2)
-    betterTheta, L_thetaVec, countIter = logreg.lgReg(v_theta, X_train, y_train, alpha=0.001, maxIter=500,
+    betterTheta, L_thetaVec, countIter = logreg.lgReg(v_theta, X_train, y_train, alpha=0.001, maxIter=700,
                                                       difference=0.000000001)
 
 
